@@ -1,14 +1,15 @@
 @extends('layouts.plantilla')
 
-@section('title','cursos')
+@section('title','Cursos')
 
 @section('content')
-    <h1>Bienvenidos a la pagina principal del curso</h1>
-    <a href="{{route('cursos.create')}}">Crear Curso</a>
+    <h1>Liga Futbol de Catalunya</h1>
+    <a href="{{route('cursos.create')}}">Crear Equipo</a>
     <ul>
         @foreach ($cursos as $curso)
             <li>
-                <a href="{{route('cursos.show', $curso->id)}}">{{$curso->name}}</a>
+                <a href="{{route('cursos.show',$curso->id)}}">{{$curso->name}}</a>
+                <br>
             </li>
         @endforeach
     </ul>

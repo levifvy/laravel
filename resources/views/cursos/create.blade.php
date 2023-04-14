@@ -3,7 +3,7 @@
 @section('title','Cursos create')
 
 @section('content')
-    <h1>En esta pagina podras crear un curso</h1>
+    <h1>En esta pagina podras crear un Equipo</h1>
 
     <form action="{{route('cursos.store')}}" method="POST">
 

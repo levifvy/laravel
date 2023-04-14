@@ -31,6 +31,7 @@ class CursoController extends Controller
         return view('cursos.edit',compact('curso'));
     }
     public function update(Request $request, Curso $curso){
+        
         $request->validate([
             'name' => 'required',
             'descripcion' => 'required',

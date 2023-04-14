@@ -3,7 +3,7 @@
 @section('title','Cursos edit')
 
 @section('content')
-    <h1>En esta pagina podras editar un curso</h1>
+    <h1>En esta pagina podras editar un Equipo</h1>
 
     <form action="{{route('cursos.update',$curso)}}" method="post">
 
