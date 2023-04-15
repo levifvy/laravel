@@ -17,8 +17,8 @@
     <h1>Email Address</h1>
     <p>This is the first email I sent through Laravel</p>
 
-    <p><strong>Name: </strong>{{$contacto['name']}}</p>
-    <p><strong>Email: </strong>{{$contacto['email']}}</p>
-    <p><strong>Message: </strong>{{$contacto['message']}}</p>
+    <p><strong>Name: </strong>{{$contact['name']}}</p>
+    <p><strong>Email: </strong>{{$contact['email']}}</p>
+    <p><strong>Message: </strong>{{$contact['message']}}</p>
 </body>
 </html>

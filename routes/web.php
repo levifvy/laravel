@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContactanosController;
+use App\Http\Controllers\ContactUsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
@@ -28,6 +28,6 @@ Route::view('results','results')->name('results');
 
 Route::view('about','about')->name('about');
 
-Route::get('contactanos', [ContactanosController::class,'index'])->name('contactanos.index');
+Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
 
-Route::post('contactanos', [ContactanosController::class,'store'])->name('contactanos.store');
+Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');

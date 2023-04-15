@@ -1,11 +1,11 @@
 @extends('layouts.plantilla')
 
-@section('title','contactanos')
+@section('title','contactUs')
 
 @section('content')
     <h1>Leave us your message</h1>
 
-    <form action="{{route('contactanos.store')}}" method="POST">
+    <form action="{{route('contactUs.store')}}" method="POST">
 
         @csrf
 
@@ -13,7 +13,6 @@
             Name:<br>
             <input type="text" name="name" >
         </label>
-        <br>
 
         @error('name')
             <p><strong>{{$message}}</strong></p>
@@ -24,7 +23,7 @@
             Email:<br>
             <input type="text" name="email" >
         </label>
-        <br>
+        
         @error('email')
             <p><strong>{{$message}}</strong></p>
         @enderror
@@ -33,8 +32,8 @@
             Message:<br>
             <textarea name="message" rows="4"></textarea>
         </label>
-        <br>
-        @error('mensaje')
+        
+        @error('message')
             <p><strong>{{$message}}</strong></p>
         @enderror
         <br>

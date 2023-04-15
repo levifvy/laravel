@@ -12,7 +12,7 @@
             </li>
             <li><a href="{{route('about')}}" class="{{request()->routeIs('about') ? 'active':''}}">Abouts us</a>
             </li>
-            <li><a href="{{route('contactanos.index')}}" class="{{request()->routeIs('contactanos.index') ? 'active':''}}">Contact us</a>
+            <li><a href="{{route('contactUs.index')}}" class="{{request()->routeIs('contactUs.index') ? 'active':''}}">Contact us</a>
             </li>
         </ul>
     </nav>
