@@ -5,7 +5,7 @@
 @section('content')
     <h1>En esta pagina podras editar un Equipo</h1>
 
-    <form action="{{route('cursos.update',$curso)}}" method="post">
+    <form action="{{route('cursos.update', $curso)}}" method="post">
 
         @csrf
 
@@ -13,7 +13,7 @@
 
         <label>
             Nombre:<br>
-            <input type="text" name="name" value="{{old('name',$curso->name)}}">
+            <input type="text" name="name" value="{{old('name', $curso->name)}}">
         </label>
 
         @error('name')
@@ -23,7 +23,7 @@
         <br>
         <label>
             Descripción:<br>
-            <textarea name="descripcion" rows="5">{{old('descripcion',$curso->descripcion)}}</textarea>
+            <textarea name="descripcion" rows="5">{{old('descripcion', $curso->descripcion)}}</textarea>
         </label>
 
         @error('descripcion')
@@ -33,7 +33,7 @@
         <br>
         <label>
             Categoria:<br>
-            <input type="text" name="categoria" value="{{old('categoria',$curso->categoria)}}">
+            <input type="text" name="categoria" value="{{old('categoria', $curso->categoria)}}">
         </label>
 
         @error('categoria')

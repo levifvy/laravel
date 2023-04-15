@@ -30,7 +30,7 @@ class StoreCurso extends FormRequest
     public function attributes()
     {
         return[
-            'name'=> 'course name',
+            'name'=> 'team name',
         ];
     }
     public function messages()
