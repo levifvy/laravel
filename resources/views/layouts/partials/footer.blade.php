@@ -1,3 +1,3 @@
 <footer>
-    <h3>Aqui va el pie de pagina</h3>
+    <h3>Here goes the footer</h3>
 </footer>

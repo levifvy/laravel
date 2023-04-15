@@ -1,11 +1,11 @@
 @extends('layouts.plantilla')
 
-@section('title','Cursos edit')
+@section('title','Teams edit')
 
 @section('content')
     <h1>On this page you can edit a Team</h1>
 
-    <form action="{{route('cursos.update', $curso)}}" method="post">
+    <form action="{{route('teams.update', $team)}}" method="post">
 
         @csrf
 
@@ -13,7 +13,7 @@
 
         <label>
             Team Name:<br>
-            <input type="text" name="name" value="{{old('name', $curso->name)}}">
+            <input type="text" name="name" value="{{old('name', $team->name)}}">
         </label>
 
         @error('name')
@@ -25,20 +25,20 @@
         <br>
         <label>
             Description:<br>
-            <textarea name="descripcion" rows="5">{{old('descripcion', $curso->descripcion)}}</textarea>
+            <textarea name="description" rows="5">{{old('description', $team->description)}}</textarea>
         </label>
 
-        @error('descripcion')
+        @error('description')
             <small>*{{$message}}</small>
         @enderror
 
         <br>
         <label>
             Category:<br>
-            <input type="text" name="categoria" value="{{old('categoria', $curso->categoria)}}">
+            <input type="text" name="category" value="{{old('category', $team->category)}}">
         </label>
 
-        @error('categoria')
+        @error('category')
             <small>*{{$message}}</small>
         @enderror
 

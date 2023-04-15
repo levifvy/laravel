@@ -4,7 +4,7 @@
         <ul>
             <li><a href="{{route('home')}}" class="{{request()->routeIs('home') ? 'active':''}}">Home</a>
             </li>
-            <li><a href="{{route('cursos.index')}}" class="{{request()->routeIs('cursos.*') ? 'active':''}}">Teams</a>
+            <li><a href="{{route('teams.index')}}" class="{{request()->routeIs('teams.*') ? 'active':''}}">Teams</a>
             </li>
             <li><a href="{{route('fixtures')}}" class="{{request()->routeIs('fixtures') ? 'active':''}}">Fixtures</a>
             </li>

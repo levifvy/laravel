@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Curso;
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Curso>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Team>
  */
-class CursoFactory extends Factory
+class TeamFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class CursoFactory extends Factory
      * @return array<string, mixed>
      */
 
-     protected $model = Curso::class;
+     protected $model = Team::class;
 
     public function definition(): array
     {
@@ -25,8 +25,8 @@ class CursoFactory extends Factory
         return [
             'name'=> $name,
             'slug'=> Str::slug($name, '-'),
-            'descripcion'=> $this->faker->paragraph(),
-            'categoria'=> $this->faker->randomElement(['Primera Division','Segunda Division'])     
+            'description'=> $this->faker->paragraph(),
+            'category'=> $this->faker->randomElement(['First division','Second division','Third division','Amateur'])     
         ];
     }
 }

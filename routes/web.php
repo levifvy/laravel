@@ -4,7 +4,7 @@ use App\Http\Controllers\ContactUsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
-use App\Http\Controllers\CursoController;
+use App\Http\Controllers\TeamController;
 
 
 /*
@@ -20,7 +20,7 @@ use App\Http\Controllers\CursoController;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::resource('cursos', CursoController::class);
+Route::resource('teams', TeamController::class);
 
 Route::view('fixtures','fixtures')->name('fixtures');
 

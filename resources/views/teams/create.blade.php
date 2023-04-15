@@ -1,11 +1,11 @@
 @extends('layouts.plantilla')
 
-@section('title','Cursos create')
+@section('title','Teams create')
 
 @section('content')
     <h1>On this page, you can register your football team.</h1>
 
-    <form action="{{route('cursos.store')}}" method="POST">
+    <form action="{{route('teams.store')}}" method="POST">
 
         @csrf
 
@@ -25,10 +25,10 @@
         <br>
         <label>
             Description:<br>
-            <textarea name="descripcion" rows="5">{{old('descripcion')}}</textarea>
+            <textarea name="description" rows="5">{{old('description')}}</textarea>
         </label>
 
-        @error('descripcion')
+        @error('description')
             <br>
             <small>*{{$message}}</small>
             <br>
@@ -37,10 +37,10 @@
 
         <label>
             Category:<br>
-            <input type="text" name="categoria" value="{{old('categoria')}}">
+            <input type="text" name="category" value="{{old('category')}}">
         </label>
 
-        @error('categoria')
+        @error('category')
             <br>
             <small>*{{$message}}</small>
             <br>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCurso extends FormRequest
+class StoreTeam extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,8 @@ class StoreCurso extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'descripcion' => 'required|min:10',
-            'categoria' => 'required'
+            'description' => 'required|min:10',
+            'category' => 'required'
         ];
     }
     public function attributes()
@@ -36,7 +36,7 @@ class StoreCurso extends FormRequest
     public function messages()
     {
         return[
-            'descripcion.required'=> 'You must enter a team description',
+            'description.required'=> 'You must enter a team description',
         ];
     }
 }
