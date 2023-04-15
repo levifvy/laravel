@@ -22,7 +22,7 @@ class StoreCurso extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:10',
+            'name' => 'required|max:20',
             'descripcion' => 'required|min:10',
             'categoria' => 'required'
         ];
@@ -30,13 +30,13 @@ class StoreCurso extends FormRequest
     public function attributes()
     {
         return[
-            'name'=> 'course name',
+            'name'=> 'team name',
         ];
     }
     public function messages()
     {
         return[
-            'descripcion.required'=> 'You must enter a course description',
+            'descripcion.required'=> 'You must enter a team description',
         ];
     }
 }
