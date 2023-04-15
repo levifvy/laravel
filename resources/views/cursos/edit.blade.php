@@ -20,6 +20,8 @@
             <small>*{{$message}}</small>
         @enderror
 
+        <input type="hidden" name="slug" value="slug">
+
         <br>
         <label>
             Descripción:<br>

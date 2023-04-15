@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCurso;
+use Illuminate\Support\Str;
 
 class CursoController extends Controller
 {
@@ -19,6 +20,10 @@ class CursoController extends Controller
     }
     public function store(StoreCurso $request){
 
+        $request->merge([
+            'slug' => Str::slug($request->name),
+          ]);
+
         $curso = Curso::create($request->all());
         
         return redirect()->route('cursos.show', $curso);
@@ -32,6 +37,10 @@ class CursoController extends Controller
         return view('cursos.edit', compact('curso'));
     }
     public function update(Request $request, Curso $curso){
+
+        $request->merge([
+            'slug' => Str::slug($request->name),
+          ]);
         
         $request->validate([
             'name' => 'required',
