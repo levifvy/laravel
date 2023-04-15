@@ -1,19 +1,18 @@
 @extends('layouts.plantilla')
 
-@section('title','contactanos')
+@section('title','contactUs')
 
 @section('content')
-    <h1>Dejanos un mensaje</h1>
+    <h1>Leave us your message</h1>
 
-    <form action="{{route('contactanos.store')}}" method="POST">
+    <form action="{{route('contactUs.store')}}" method="POST">
 
         @csrf
 
         <label for="">
-            Nombre:<br>
+            Name:<br>
             <input type="text" name="name" >
         </label>
-        <br>
 
         @error('name')
             <p><strong>{{$message}}</strong></p>
@@ -21,24 +20,24 @@
 
         <br>
         <label for="">
-            correo:<br>
-            <input type="text" name="correo" >
+            Email:<br>
+            <input type="text" name="email" >
         </label>
-        <br>
-        @error('correo')
+        
+        @error('email')
             <p><strong>{{$message}}</strong></p>
         @enderror
         <br>
         <label for="">
-            mensaje:<br>
-            <textarea name="mensaje" rows="4"></textarea>
+            Message:<br>
+            <textarea name="message" rows="4"></textarea>
         </label>
-        <br>
-        @error('mensaje')
+        
+        @error('message')
             <p><strong>{{$message}}</strong></p>
         @enderror
         <br>
-        <button type="submit">Enviar mensaje</button>
+        <button type="submit">Submit message</button>
     </form>
     @if (session('info'))
         <script>

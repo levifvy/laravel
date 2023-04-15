@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\ContactanosController;
+use App\Http\Controllers\ContactUsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
-use App\Http\Controllers\CursoController;
+use App\Http\Controllers\TeamController;
 
 
 /*
@@ -20,14 +20,14 @@ use App\Http\Controllers\CursoController;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::resource('cursos', CursoController::class);
+Route::resource('teams', TeamController::class);
 
-Route::view('partidos','partidos')->name('partidos');
+Route::view('fixtures','fixtures')->name('fixtures');
 
-Route::view('clasificatorias','clasificatorias')->name('clasificatorias');
+Route::view('results','results')->name('results');
 
-Route::view('nosotros','nosotros')->name('nosotros');
+Route::view('about','about')->name('about');
 
-Route::get('contactanos', [ContactanosController::class,'index'])->name('contactanos.index');
+Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
 
-Route::post('contactanos', [ContactanosController::class,'store'])->name('contactanos.store');
+Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');

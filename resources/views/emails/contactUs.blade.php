@@ -14,11 +14,11 @@
 
 </head>
 <body>
-    <h1>Correo electrónico</h1>
-    <p>Este es el primer correo que mandaré por Laravel</p>
+    <h1>Email Address</h1>
+    <p>This is the first email I sent through Laravel</p>
 
-    <p><strong>Nombre: </strong>{{$contacto['name']}}</p>
-    <p><strong>Correo: </strong>{{$contacto['correo']}}</p>
-    <p><strong>Mensaje: </strong>{{$contacto['mensaje']}}</p>
+    <p><strong>Name: </strong>{{$contact['name']}}</p>
+    <p><strong>Email: </strong>{{$contact['email']}}</p>
+    <p><strong>Message: </strong>{{$contact['message']}}</p>
 </body>
 </html>
