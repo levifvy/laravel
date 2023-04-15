@@ -22,11 +22,11 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::resource('cursos', CursoController::class);
 
-Route::view('partidos','partidos')->name('partidos');
+Route::view('fixtures','fixtures')->name('fixtures');
 
-Route::view('clasificatorias','clasificatorias')->name('clasificatorias');
+Route::view('results','results')->name('results');
 
-Route::view('nosotros','nosotros')->name('nosotros');
+Route::view('about','about')->name('about');
 
 Route::get('contactanos', [ContactanosController::class,'index'])->name('contactanos.index');
 

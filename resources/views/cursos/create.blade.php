@@ -3,14 +3,14 @@
 @section('title','Cursos create')
 
 @section('content')
-    <h1>En esta pagina podras crear un Equipo</h1>
+    <h1>On this page, you can register your football team.</h1>
 
     <form action="{{route('cursos.store')}}" method="POST">
 
         @csrf
 
         <label>
-            Nombre:<br>
+            Team Name:<br>
             <input type="text" name="name" value="{{old('name')}}">
         </label>
 
@@ -24,7 +24,7 @@
 
         <br>
         <label>
-            Descripción:<br>
+            Description:<br>
             <textarea name="descripcion" rows="5">{{old('descripcion')}}</textarea>
         </label>
 
@@ -36,7 +36,7 @@
         <br>
 
         <label>
-            Categoria:<br>
+            Category:<br>
             <input type="text" name="categoria" value="{{old('categoria')}}">
         </label>
 
@@ -47,6 +47,6 @@
         @enderror
         <br>
         <br>
-        <button type="submit">Enviar formulario</button>
+        <button type="submit">Submit form</button>
     </form>
 @endsection

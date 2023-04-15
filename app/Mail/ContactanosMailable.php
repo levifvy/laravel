@@ -31,7 +31,7 @@ class ContactanosMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Informacion de contacto',
+            subject: 'Contact information',
         );
     }
 
@@ -54,10 +54,4 @@ class ContactanosMailable extends Mailable
     {
         return [];
     }
-
-    // public function build()
-    // {
-    //     return $this->view('emails.contactanos');
-        
-    // }
 }

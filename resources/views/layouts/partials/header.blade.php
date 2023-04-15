@@ -1,18 +1,18 @@
 <header>
-    <h1>Tu mejor Gestor de Equipos de la Liga de Futbol de Catalunya</h1>
+    <h1>Your best Manager of the Catalan Football League</h1>
     <nav>
         <ul>
             <li><a href="{{route('home')}}" class="{{request()->routeIs('home') ? 'active':''}}">Home</a>
             </li>
-            <li><a href="{{route('cursos.index')}}" class="{{request()->routeIs('cursos.*') ? 'active':''}}">Equipos</a>
+            <li><a href="{{route('cursos.index')}}" class="{{request()->routeIs('cursos.*') ? 'active':''}}">Teams</a>
             </li>
-            <li><a href="{{route('partidos')}}" class="{{request()->routeIs('partidos') ? 'active':''}}">Partidos</a>
+            <li><a href="{{route('fixtures')}}" class="{{request()->routeIs('fixtures') ? 'active':''}}">Fixtures</a>
             </li>
-            <li><a href="{{route('clasificatorias')}}" class="{{request()->routeIs('clasificatorias') ? 'active':''}}">Clasificatorias</a>
+            <li><a href="{{route('results')}}" class="{{request()->routeIs('results') ? 'active':''}}">Results</a>
             </li>
-            <li><a href="{{route('nosotros')}}" class="{{request()->routeIs('nosotros') ? 'active':''}}">Nosotros</a>
+            <li><a href="{{route('about')}}" class="{{request()->routeIs('about') ? 'active':''}}">Abouts us</a>
             </li>
-            <li><a href="{{route('contactanos.index')}}" class="{{request()->routeIs('contactanos.index') ? 'active':''}}">Contáctanos</a>
+            <li><a href="{{route('contactanos.index')}}" class="{{request()->routeIs('contactanos.index') ? 'active':''}}">Contact us</a>
             </li>
         </ul>
     </nav>

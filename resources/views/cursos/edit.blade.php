@@ -3,7 +3,7 @@
 @section('title','Cursos edit')
 
 @section('content')
-    <h1>En esta pagina podras editar un Equipo</h1>
+    <h1>On this page you can edit a Team</h1>
 
     <form action="{{route('cursos.update', $curso)}}" method="post">
 
@@ -12,7 +12,7 @@
         @method('put')
 
         <label>
-            Nombre:<br>
+            Team Name:<br>
             <input type="text" name="name" value="{{old('name', $curso->name)}}">
         </label>
 
@@ -24,7 +24,7 @@
 
         <br>
         <label>
-            Descripción:<br>
+            Description:<br>
             <textarea name="descripcion" rows="5">{{old('descripcion', $curso->descripcion)}}</textarea>
         </label>
 
@@ -34,7 +34,7 @@
 
         <br>
         <label>
-            Categoria:<br>
+            Category:<br>
             <input type="text" name="categoria" value="{{old('categoria', $curso->categoria)}}">
         </label>
 
@@ -43,6 +43,6 @@
         @enderror
 
         <br>
-        <button type="submit">Actualizar formulario</button>
+        <button type="submit">Update this Team</button>
     </form>
 @endsection

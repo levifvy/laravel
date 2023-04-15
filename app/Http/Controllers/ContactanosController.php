@@ -16,12 +16,12 @@ class ContactanosController extends Controller
         
         $request->validate([
             'name' => 'required',
-            'correo' => 'required|email',
-            'mensaje' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
         ]);
-    $correo = new ContactanosMailable($request->all());
-    Mail::to('levifv.barcelona@gmail.com')->send($correo);
+    $email = new ContactanosMailable($request->all());
+    Mail::to('levifv.barcelona@gmail.com')->send($email);
 
-    return redirect()->route('contactanos.index')->with('info','Mensaje enviado');
+    return redirect()->route('contactanos.index')->with('info','message sent');
     }
 }

@@ -3,8 +3,8 @@
 @section('title','Cursos')
 
 @section('content')
-    <h1>Liga Futbol de Catalunya</h1>
-    <a href="{{route('cursos.create')}}">Crear Equipo</a>
+    <h1>Catalan Football League</h1>
+    <a href="{{route('cursos.create')}}">New team</a>
     <ul>
         @foreach ($cursos as $curso)
             <li>
