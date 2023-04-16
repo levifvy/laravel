@@ -3,5 +3,5 @@
 @section('title','Home')
 
 @section('content')
-    <h1>Bienvenidos a la pagina principal</h1>
+    <h1>Great Football League of Catalonia</h1>
 @endsection
