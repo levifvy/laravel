@@ -31,3 +31,5 @@ Route::view('about','about')->name('about');
 Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
 
 Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');
+
+
