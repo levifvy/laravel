@@ -3,7 +3,6 @@
 @section('title','contactUs')
 
 @section('content')
-    <h1 class="text-3xl text-purple-600 font-bold underline text-center m-2">Leave us your message</h1>
 
     <div class="flex items-center justify-center p-12">
         <div class="mx-auto w-full max-w-[550px]">
@@ -40,11 +39,12 @@
                     <br>
                 </div>
                 <div>
-                    <button type="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">Submit</button>
+                    <button type="submit" class="hover:shadow-form rounded-md bg-[#a5b4fc] py-3 px-8 text-base font-semibold text-white outline-none">Submit</button>
                 </div>
             </form>
         </div>
     </div>
+
 
     @if (session('info'))
         <script>
