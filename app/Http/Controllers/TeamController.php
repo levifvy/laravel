@@ -15,6 +15,13 @@ class TeamController extends Controller
 
         return view('teams.index', compact('teams'));
     }
+    
+    public function first(){
+
+        $teams = Team::orderBy('id', 'desc')->paginate();
+
+        return view('teams.first', compact('teams'));
+    }
     public function create(){
         return view('teams.create');
     }

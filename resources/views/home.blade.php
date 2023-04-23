@@ -3,10 +3,10 @@
 @section('title','Home')
 
 @section('content')
-<div class=" bg-indigo-50">
-    
+<div class=" bg-indigo-50" >
+  <div class="">
     <section class="flex flex-col items-center bg-gradient-to-b from-green-300 to-purple-300 min-h-screen body-font text-gray-600 ">
-        <h1 class="text-3xl font-bold text-gray-800 py-4">Great Football League of Catalonia</h1>
+          <h1 class="text-3xl font-bold text-gray-800 py-4">The best Football Teams Manager of Catalonia</h1>
       <div class="container mx-auto px-5 py-10">
         <div class="-m-4 flex flex-wrap">
           <div class="w-full p-4 md:w-1/2 lg:w-1/4">
@@ -69,7 +69,10 @@
               <p class="mt-1">You want to play but no have a team</p>
             </div>
           </div>
+        </div>
       </div>
     </section>
+  </div>
 </div>
+
 @endsection

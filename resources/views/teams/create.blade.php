@@ -3,7 +3,7 @@
 @section('title','Teams create')
 
 @section('content')
-<h1 class="text-3xl text-purple-600 font-bold underline text-left m-2">Register your team</h1>
+
     {{-- <form action="{{route('teams.store')}}" method="POST" class="w-full max-w-lg">
 
         @csrf
@@ -60,60 +60,68 @@
     </form> --}}
 
 
-<div style="background-color : #f4f4f0" class=" sm:mx-32 lg:mx-32 xl:mx-72 ">
-    <div class="flex justify-between container mx-auto">
-        <div class="w-full">
-            <div class="mt-4 px-4">
-                <h1 class="font-thinner flex text-4xl pt-10 px-5">Fill this form:</h1>
+    <div class="relative py-16 bg-gradient-to-br from-sky-50 to-gray-200">  
+        <div class="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
+            <div class="m-auto md:w-8/12 lg:w-6/12 xl:w-6/12">
+                <div class="rounded-xl bg-white shadow-xl">
+                    <div class="p-6 sm:p-16">
+                        <div class="space-y-4">
+                            <h2 class="mb-8 text-2xl text-cyan-900 font-bold">Register your team:</h2>
+                        </div>
                 
-                    <form action="{{route('teams.store')}}" method="POST" class="mx-5 my-5">
+                        <form action="{{route('teams.store')}}" method="POST" class="mx-5 my-5">
 
-                        @csrf
+                            @csrf
 
-                        <label class="relative block p-3 border-2 border-black rounded" htmlFor="name">
-                            <span class="text-md font-semibold text-zinc-900" htmlFor="name">Team Name</span>
-                            <input class="w-full bg-transparent p-0 text-sm  text-gray-500 focus:outline-none" id="name" type="text" name="name" value="{{old('name')}}" placeholder="Please fill out this field" />
-                            @error('name')
-                                <br>
-                                <small>*{{$message}}</small>
-                                <br>
-                            @enderror
-                        </label>
-                    
-                    
-                        <label class="relative block p-3 border-2 mt-5 border-black rounded" htmlFor="name">
-                            <span class="text-md font-semibold text-zinc-900" htmlFor="name">Description</span>
-                            <textarea class="w-full   p-0 text-sm border-none bg-transparent text-gray-500 focus:outline-none" id="name" type="text" name="description" rows="5" placeholder="Tell us about your team.">{{old('description')}}</textarea>
-                            @error('description')
-                                <br>
-                                <small>*{{$message}}</small>
-                                <br>
-                            @enderror
-                        </label>
-                            
-                        
-                        <h1 class="text-2xl font-semibold mt-5">Category :</h1>
-                        <p class="text-black text-sm font-normal flex gap gap-2 pt-2">
-                            <div class="relative">
-                                <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="category" value="{{old('category')}}">
-                                    <option value="" disabled selected>Select one option</option>
-                                    <option>First division</option>
-                                    <option>Second division</option>
-                                    <option>Third division</option>
-                                    <option>Amateur</option>
-                                </select>
-                                @error('category')
+                            <label class="relative block p-3 border-2 border-black rounded" htmlFor="name">
+                                <span class="text-md font-semibold text-zinc-900" htmlFor="name">Team Name</span>
+                                <input class="w-full bg-transparent p-0 text-sm  text-gray-500 focus:outline-none" id="name" type="text" name="name" value="{{old('name')}}" placeholder="Please fill out this field" />
+                                @error('name')
                                     <br>
                                     <small>*{{$message}}</small>
                                     <br>
                                 @enderror
-                            </div>
-                        </p>
-                        <Button type="submit" class="mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4">Submit</Button>
-                    </form>
+                            </label>
+                        
+                        
+                            <label class="relative block p-3 border-2 mt-5 border-black rounded" htmlFor="name">
+                                <span class="text-md font-semibold text-zinc-900" htmlFor="name">Description</span>
+                                <textarea class="w-full   p-0 text-sm border-none bg-transparent text-gray-500 focus:outline-none" id="name" type="text" name="description" rows="5" placeholder="Tell us about your team.">{{old('description')}}</textarea>
+                                @error('description')
+                                    <br>
+                                    <small>*{{$message}}</small>
+                                    <br>
+                                @enderror
+                            </label>
+                                
+                            
+                            <h1 class="text-2xl font-semibold mt-5">Category :</h1>
+                            <p class="text-black text-sm font-normal flex gap gap-2 pt-2">
+                                <div class="relative">
+                                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="category" value="{{old('category')}}">
+                                        <option value="" disabled selected>Select one option</option>
+                                        <option>First division</option>
+                                        <option>Second division</option>
+                                        <option>Third division</option>
+                                        <option>Amateur</option>
+                                    </select>
+                                    @error('category')
+                                        <br>
+                                        <small>*{{$message}}</small>
+                                        <br>
+                                    @enderror
+                                </div>
+                            </p>
+                            <Button type="submit" class="mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4">Submit</Button>
+                        </form>
+                    </div>
             </div>
         </div>
     </div>
 </div>
     
+
+
+
+
 @endsection

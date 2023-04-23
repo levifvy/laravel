@@ -26,7 +26,7 @@ class TeamFactory extends Factory
             'name'=> $name,
             'slug'=> Str::slug($name, '-'),
             'description'=> $this->faker->paragraph(),
-            'category'=> $this->faker->randomElement(['First division','Second division','Third division','Amateur'])     
+            'category'=> $this->faker->randomElement(['First division','Second division','Third division'])     
         ];
     }
 }
