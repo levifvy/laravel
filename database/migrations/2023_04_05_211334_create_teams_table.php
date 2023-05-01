@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -13,11 +14,20 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug');
-            $table->text('description');
-            $table->text('category');
+            $table->text('description')->nullable();
+            $table->integer('goals')->default(0);
+            $table->integer('fouls_commited')->default(0);
+            $table->integer('fouls_received')->default(0);
+            $table->integer('red_cards')->default(0);
+            $table->integer('yellow_cards')->default(0);
+            $table->integer('score')->default(100);
+
+            $table->enum('category', ['First category', 'Second category', 'Third category']);
+
             $table->timestamps();
+
         });
     }
 
