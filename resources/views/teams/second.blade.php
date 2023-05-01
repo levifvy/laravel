@@ -1,6 +1,5 @@
 @extends('layouts.plantilla')
-
-@section('title','Teams.first')
+@section('title','Second')
 
 @section('content')
 
@@ -28,9 +27,9 @@
             <div class="rounded-xl bg-white shadow-xl">
                 <div class="p-6 sm:p-16">
                     <div class="space-y-4">
-                        <h2 class="mb-8 text-2xl text-cyan-900 font-bold">First category teams</h2>
+                        <h2 class="mb-8 text-2xl text-cyan-900 font-bold">Second category teams</h2>
                     </div>
-                    @foreach ($teams->where('category', 'First category') as $team)
+                    @foreach ($teams->where('category', 'Second category') as $team)
                         <a href="{{route('teams.show', $team)}}" class="block hover:bg-gray-100">
                             <div class="mt-1 grid space-y-4">
                                 <button class="group h-10 px-6 border-2 border-gray-300 rounded-lg transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
@@ -49,7 +48,6 @@
                     </div>
                 </div>
             </div>
-           
         </div>
     </div>
 </div>

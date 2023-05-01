@@ -21,12 +21,22 @@ class TeamFactory extends Factory
 
     public function definition(): array
     {
-        $name =$this->faker->sentence();
+        $name = substr($this->faker->sentence(), 0, 20);
         return [
             'name'=> $name,
             'slug'=> Str::slug($name, '-'),
             'description'=> $this->faker->paragraph(),
-            'category'=> $this->faker->randomElement(['First division','Second division','Third division'])     
+            'category'=> $this->faker->randomElement(['First category','Second category','Third category']),
+
+            'goals' => $this->faker->numberBetween(0, 10),
+            'score' => $this->faker->numberBetween(0, 100),
+            'fouls_commited' => $this->faker->numberBetween(0, 15),
+            'fouls_received' => $this->faker->numberBetween(0, 15),
+            'red_cards' => $this->faker->numberBetween(0, 15),
+            'yellow_cards' => $this->faker->numberBetween(0, 15)
+            
+
+
         ];
     }
 }
