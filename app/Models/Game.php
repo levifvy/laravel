@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Team;
 use App\Models\category;
 
-class Fixture extends Model
+class Game extends Model
 {
     use HasFactory;
-
-    public function team()
+   
+    public function team1()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class, 'team1_id');
+    }
+
+    public function team2()
+    {
+        return $this->belongsTo(Team::class, 'team2_id');
     }
 
     public function category()

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Fixture;
+use App\Models\Game;
 use App\Models\Category;
 
 class Team extends Model
@@ -26,9 +26,9 @@ class Team extends Model
         return 'slug';
     }
 
-    public function fixtures()
+    public function games()
     {
-        return $this->hasMany(Fixture::class);
+        return $this->hasMany(Game::class);
     }
 
     public function category()

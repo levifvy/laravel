@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\FixtureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\TeamController;
-
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +21,7 @@ use App\Http\Controllers\TeamController;
 Route::get('/', HomeController::class)->name('home');
 
 Route::resource('teams', TeamController::class);
+Route::resource('games', GameController::class);
 
 Route::get('first', [TeamController::class,'first'])->name('first');
 Route::get('second', [TeamController::class,'second'])->name('second');
@@ -35,6 +35,9 @@ Route::get('results', [TeamController::class,'results'])->name('results');
 Route::get('results2', [TeamController::class,'results2'])->name('results2');
 Route::get('results3', [TeamController::class,'results3'])->name('results3');
 
+Route::post('/teams/{id}/update-stats', 'TeamController@updateStats')->name('teams.update-stats');
+
+
 Route::view('about','about')->name('about');
 
 Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
@@ -42,5 +45,10 @@ Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.i
 Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');
 
 Route::get('teamsScore', 'TeamController@showteamsByScore');
+
+
+Route::get('/games/create/select-category', 'GameController@selectCategory')->name('games.selectCategory');
+Route::get('/games/create/select-teams/{category}', 'GameController@selectTeams')->name('games.selectTeams');
+
 
 
