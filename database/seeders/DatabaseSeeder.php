@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Team;
 use App\Models\User;
+Use App\Models\Category;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         Team::factory(20)->create();
+        
     }
 }
