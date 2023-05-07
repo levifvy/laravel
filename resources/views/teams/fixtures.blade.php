@@ -20,9 +20,9 @@
                                 </div>
                                 <div class="grid justify-items-end">
                                     <div class="mb-4 flex justify-center">
-                                        <label class="block text-blue-700 font-bold mb-2" for="state1">State:</label>&nbsp
+                                        <label class="block text-blue-700 font-bold mb-2" for="state">State:</label>&nbsp
                                         
-                                        <select name="state1" id="state1" required>
+                                        <select name="state" id="state" required>
                                             <span>
                                                 <option class="block text-blue-700 font-bold mb-2" value="">--choose one state--</option>
                                                 <option class="block text-blue-700 font-bold mb-2" value="1">Winner</option>
@@ -65,10 +65,10 @@
             </div>
             <div class="text-center mt-20">
                 <div class="container text-center">
-                    <h1>Chronometer</h1>
+                    <h1 class="text-white font-bold mb-2">Chronometer</h1>
                     <h2><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></h2>
-                    <button id="start-btn">Start</button>
-                    <button id="pause-btn">Pause</button>
+                    <button class="text-white font-bold mb-2" id="start-btn">Start</button>&nbsp&nbsp
+                    <button class="text-white font-bold mb-2" id="pause-btn">Pause</button>
                 </div>
                 <div class="mt-20">
                     <h1 class="text-5xl font-bold text-yellow-500 bg-gradient-to-r from-yellow-500 to-red-500 p-2 rounded-full shadow-lg"><p class="text-8xl text-yellow-200">VS</p></h1>
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="grid justify-items-start">
                                     <div class="mb-4 flex justify-center">
-                                        <select name="state2" id="state2" required>
+                                        <select name="state" id="state" required>
                                             <span>
                                                 <option class="block text-blue-700 font-bold mb-2" value="">--choose one state--</option>
                                                 <option class="block text-blue-700 font-bold mb-2" value="1">Winner</option>
@@ -106,7 +106,7 @@
                                             </span>
                                         </select>
                                         
-                                        <label class="block text-blue-700 font-bold mb-2" for="state2">
+                                        <label class="block text-blue-700 font-bold mb-2" for="state">
                                             &nbsp: State
                                         </label>
                                     </div>
