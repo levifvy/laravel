@@ -145,11 +145,6 @@ class TeamController extends Controller
         return redirect()->route('teams.index');
     }
 
-    public function showteamsByScore()
-{
-    $teams = DB::table('teamsScore')->orderByDesc('score')->get();
-    return view('results')->with('teamsScore', $teams);
-}
 
 public function fixtures5(Request $request, $id)
 {
@@ -162,6 +157,7 @@ public function fixtures5(Request $request, $id)
     $fouls_received = $request->input('fouls_received');
     $red_cards = $request->input('red_cards');
     $yellow_cards = $request->input('yellow_cards');
+    $state = $request->input('state');
 
     // update stats from the team
     $team->goals += $goals;
@@ -169,9 +165,10 @@ public function fixtures5(Request $request, $id)
     $team->fouls_received += $fouls_received;
     $team->red_cards += $red_cards;
     $team->yellow_cards += $yellow_cards;
+    $team->state += $state;
 
     // Get the new value of "score" column
-    $score = $team->score + ($goals * 5) - ($fouls_commited * 2) - ($red_cards * 4) - ($yellow_cards * 3);
+    $score = $team->score + ($goals * 5) - ($fouls_commited * 2) - ($red_cards * 4) - ($yellow_cards * 3) + ($state * 10);
 
     // update the "score" column
     $team->score = $score;
@@ -184,20 +181,5 @@ public function fixtures5(Request $request, $id)
     //return view('teams.fixtures', compact('teams'));
     return redirect()->route('teams.fixtures5', ['id' => $id]);
 }
-
-public function processFormTeams(Request $request)
-{
-    $data = $request->all();
-    session()->put('formulario_data', $data);
-
-    return redirect()->route('teams.fixtures', compact('teams'));
-}
-
-public function getCategory(Request $request, $id)
-{
-    $team = Team::find($id);
-    return response()->json(['category' => $team->category]);
-}
-
 
 }
