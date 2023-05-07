@@ -38,8 +38,6 @@ Route::get('results', [TeamController::class,'results'])->name('results');
 Route::get('results2', [TeamController::class,'results2'])->name('results2');
 Route::get('results3', [TeamController::class,'results3'])->name('results3');
 
-Route::post('/teams/{id}/update-stats', 'TeamController@updateStats')->name('teams.update-stats');
-
 
 Route::view('about','about')->name('about');
 
@@ -49,13 +47,6 @@ Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.
 
 
 
-Route::get('teamsScore', 'TeamController@showteamsByScore');
 
 
-Route::get('/games/create/select-category', 'GameController@selectCategory')->name('games.selectCategory');
-Route::get('/games/create/select-teams/{category}', 'GameController@selectTeams')->name('games.selectTeams');
-
-Route::post('/procesar-formulario', 'TeamController@procesar')->name('procesar-formulario');
-
-Route::get('/teams/{id}/category', 'TeamController@getCategory')->name('teams.getCategory');
 
