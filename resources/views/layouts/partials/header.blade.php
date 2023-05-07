@@ -23,7 +23,7 @@
                 <div class="text-xl lg:flex-grow flex justify-center">
                     <a href="{{route('home')}}"            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('home') ? 'active':''}}">Home</a>
                     <a href="{{route('teams.index')}}"     class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('teams.*') ? 'active':''}}">Teams</a>
-                    <a href="{{route('fixtures')}}"        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('fixtures') ? 'active':''}}">Fixtures</a>
+                    <a href="{{route('fixtures3')}}"        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('fixtures3') ? 'active':''}}">Fixtures</a>
                     <a href="{{route('resultsMenu')}}"     class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('resultsMenu') ? 'active':''}}">Results</a>
                     <a href="{{route('about')}}"           class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('about') ? 'active':''}}">About us</a>
                     <a href="{{route('contactUs.index')}}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('contactUs.index')? 'active':''}}">Contact us</a>

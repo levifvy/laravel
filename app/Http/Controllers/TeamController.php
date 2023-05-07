@@ -14,7 +14,7 @@ class TeamController extends Controller
     public function index(){
 
         $teams = Team::orderBy('id', 'desc')->paginate(50);
-
+        
         return view('teams.index', compact('teams'));
     }
     
@@ -42,21 +42,35 @@ class TeamController extends Controller
 
         return view('teams.all', compact('teams'));
     }
-    public function fixtures(){
-
-        $teams = Team::orderBy('id', 'desc')->paginate(50);
-
-        return view('teams.fixtures', compact('teams'));
+    public function fixtures(Request $request){
+        $teams = Team::all();
+        $team1 = Team::where('name', $request->team1_name)->firstOrFail();
+        $team2 = Team::where('name', $request->team2_name)->firstOrFail();
+        
+        return view('teams.fixtures', compact('team1', 'team2', 'teams'));
     }
     public function fixtures2(){
+        //$teams = Team::all();
+        //dd($teams);
+        //return view('teams.fixtures2', ['teams' => $teams]);
 
-        $teams = Team::orderBy('id', 'desc')->paginate(50);
+        $teams = Team::all();
 
         return view('teams.fixtures2', compact('teams'));
     }
+    public function fixtures4(Request $request){
+        $teams = Team::all();
+
+        $team1 = Team::where('name', $request->team1_name)->firstOrFail();
+        $team2 = Team::where('name', $request->team2_name)->firstOrFail();
+        
+    
+        return view('teams.fixtures4', compact('team1', 'team2', 'teams'));
+    }
     public function fixtures3(){
 
-        $teams = Team::orderBy('id', 'desc')->paginate(50);
+        $teams = Team::all();
+        //$teams = Team::where('category', $category)->get();
 
         return view('teams.fixtures3', compact('teams'));
     }
@@ -169,6 +183,20 @@ public function updateStats(Request $request, $id)
     //return redirect()->route('teams.show', ['id' => $id]);
     //return view('teams.fixtures', compact('teams'));
     return redirect()->route('teams.fixtures', ['id' => $id]);
+}
+
+public function processFormTeams(Request $request)
+{
+    $data = $request->all();
+    session()->put('formulario_data', $data);
+
+    return redirect()->route('teams.fixtures', compact('teams'));
+}
+
+public function getCategory(Request $request, $id)
+{
+    $team = Team::find($id);
+    return response()->json(['category' => $team->category]);
 }
 
 
