@@ -11,7 +11,7 @@
                     @foreach ($teams as $team)
                         @if($team->id ==  $team1->id)
                             <h2 class="text-5xl font-bold text-white">{{$team->name}}</h2>
-                            <form method="POST" action="{{ route('fixtures5', ['id' => $team->id]) }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
+                            <form method="POST" action="{{ route('fixtures5') }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
                                 @csrf
                                 <div class="grid grid-cols-4">
                                     <div class="col-start-1">
@@ -66,9 +66,9 @@
             <div class="text-center mt-20">
                 <div class="container text-center">
                     <h1 class="text-white font-bold mb-2">Chronometer</h1>
-                    <h2><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></h2>
-                    <button class="text-white font-bold mb-2" id="start-btn">Start</button>&nbsp&nbsp
-                    <button class="text-white font-bold mb-2" id="pause-btn">Pause</button>
+                    <h2><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></h2><br>
+                    <button class="text-white font-bold mb-2 border" id="start-btn">Start</button>&nbsp&nbsp
+                    <button class="text-white font-bold mb-2 border" id="pause-btn">Pause</button>
                 </div>
                 <div class="mt-20">
                     <h1 class="text-5xl font-bold text-yellow-500 bg-gradient-to-r from-yellow-500 to-red-500 p-2 rounded-full shadow-lg"><p class="text-8xl text-yellow-200">VS</p></h1>
@@ -87,7 +87,7 @@
                     @foreach ($teams as $team)
                         @if($team->id == $team2->id)
                             <h2 class="text-5xl font-bold text-white">{{$team->name}}</h2>
-                            <form method="POST" action="{{ route('fixtures5', ['id' => $team->id]) }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
+                            <form method="POST" action="{{ route('fixtures5') }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
     
                                 @csrf
                                 <div class="grid grid-cols-3 gap-4">
