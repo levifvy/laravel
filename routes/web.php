@@ -28,11 +28,11 @@ Route::get('first', [TeamController::class,'first'])->name('first');
 Route::get('second', [TeamController::class,'second'])->name('second');
 Route::get('third', [TeamController::class,'third'])->name('third');
 Route::get('all', [TeamController::class,'all'])->name('all');
-Route::post('fixtures', [TeamController::class,'fixtures'])->name('fixtures');
+Route::match(['get', 'post'],'fixtures', [TeamController::class,'fixtures'])->name('fixtures');
 Route::get('fixtures2', [TeamController::class,'fixtures2'])->name('fixtures2');
 Route::get('fixtures3', [TeamController::class,'fixtures3'])->name('fixtures3');
 Route::post('fixtures4', [TeamController::class,'fixtures4'])->name('fixtures4');
-Route::post('fixtures5', [TeamController::class,'fixtures5'])->name('fixtures5');
+Route::match(['get', 'post'],'fixtures5', [TeamController::class,'fixtures5'])->name('fixtures5');
 Route::get('resultsMenu', [TeamController::class,'resultsMenu'])->name('resultsMenu');
 Route::get('results', [TeamController::class,'results'])->name('results');
 Route::get('results2', [TeamController::class,'results2'])->name('results2');
@@ -40,6 +40,7 @@ Route::get('results3', [TeamController::class,'results3'])->name('results3');
 
 
 Route::view('about','about')->name('about');
+Route::view('rules','rules')->name('rules');
 
 Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
 
