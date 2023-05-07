@@ -32,6 +32,7 @@ Route::post('fixtures', [TeamController::class,'fixtures'])->name('fixtures');
 Route::get('fixtures2', [TeamController::class,'fixtures2'])->name('fixtures2');
 Route::get('fixtures3', [TeamController::class,'fixtures3'])->name('fixtures3');
 Route::post('fixtures4', [TeamController::class,'fixtures4'])->name('fixtures4');
+Route::post('fixtures5', [TeamController::class,'fixtures5'])->name('fixtures5');
 Route::get('resultsMenu', [TeamController::class,'resultsMenu'])->name('resultsMenu');
 Route::get('results', [TeamController::class,'results'])->name('results');
 Route::get('results2', [TeamController::class,'results2'])->name('results2');
@@ -45,6 +46,8 @@ Route::view('about','about')->name('about');
 Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
 
 Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');
+
+
 
 Route::get('teamsScore', 'TeamController@showteamsByScore');
 

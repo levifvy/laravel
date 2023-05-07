@@ -30,7 +30,7 @@
 </div>
   
 
-  <script>
+<script>
     let seconds = 0;
     let minutes = 0;
     let hours = 0;
@@ -75,7 +75,7 @@
       border-radius: 0.2em;
       background-color: #eee;
     }
-  </style>
+</style>
     
 
 @endsection

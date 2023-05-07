@@ -151,7 +151,7 @@ class TeamController extends Controller
     return view('results')->with('teamsScore', $teams);
 }
 
-public function updateStats(Request $request, $id)
+public function fixtures5(Request $request, $id)
 {
     // get team to modify
     $team = Team::findOrFail($id);
@@ -182,7 +182,7 @@ public function updateStats(Request $request, $id)
     // Redirect to the team page
     //return redirect()->route('teams.show', ['id' => $id]);
     //return view('teams.fixtures', compact('teams'));
-    return redirect()->route('teams.fixtures', ['id' => $id]);
+    return redirect()->route('teams.fixtures5', ['id' => $id]);
 }
 
 public function processFormTeams(Request $request)
