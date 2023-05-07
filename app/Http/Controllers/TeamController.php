@@ -146,40 +146,41 @@ class TeamController extends Controller
     }
 
 
-public function fixtures5(Request $request, $id)
-{
-    // get team to modify
-    $team = Team::findOrFail($id);
+    public function fixtures5(Request $request, $id)
+    {
+        // get team to modify
+        $team = Team::findOrFail($id);
 
-    // get values submited by forms
-    $goals = $request->input('goals');
-    $fouls_commited = $request->input('fouls_commited');
-    $fouls_received = $request->input('fouls_received');
-    $red_cards = $request->input('red_cards');
-    $yellow_cards = $request->input('yellow_cards');
-    $state = $request->input('state');
+        // get values submited by forms
+        $goals = $request->input('goals');
+        $fouls_commited = $request->input('fouls_commited');
+        $fouls_received = $request->input('fouls_received');
+        $red_cards = $request->input('red_cards');
+        $yellow_cards = $request->input('yellow_cards');
+        $state = $request->input('state');
 
-    // update stats from the team
-    $team->goals += $goals;
-    $team->fouls_commited += $fouls_commited;
-    $team->fouls_received += $fouls_received;
-    $team->red_cards += $red_cards;
-    $team->yellow_cards += $yellow_cards;
-    $team->state += $state;
+        // update stats from the team
+        $team->goals += $goals;
+        $team->fouls_commited += $fouls_commited;
+        $team->fouls_received += $fouls_received;
+        $team->red_cards += $red_cards;
+        $team->yellow_cards += $yellow_cards;
+        $team->state += $state;
 
-    // Get the new value of "score" column
-    $score = $team->score + ($goals * 5) - ($fouls_commited * 2) - ($red_cards * 4) - ($yellow_cards * 3) + ($state * 10);
+        // Get the new value of "score" column
+        $score = $team->score + ($goals * 5) - ($fouls_commited * 2) - ($red_cards * 4) - ($yellow_cards * 3) + ($state * 10);
 
-    // update the "score" column
-    $team->score = $score;
+        // update the "score" column
+        $team->score = $score;
 
-    // Save all changes in the database
-    $team->save();
+        // Save all changes in the database
+        $team->save();
 
-    // Redirect to the team page
-    //return redirect()->route('teams.show', ['id' => $id]);
-    //return view('teams.fixtures', compact('teams'));
-    return redirect()->route('teams.fixtures5', ['id' => $id]);
-}
+        // Redirect to the team page
+        //return redirect()->route('teams.show', ['id' => $id]);
+        //return view('teams.fixtures', compact('teams'));
+        return redirect()->route('teams.fixtures5');
+        //, ['id' => $id]
+    }
 
 }
