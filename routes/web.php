@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\GameController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,10 @@ Route::get('first', [TeamController::class,'first'])->name('first');
 Route::get('second', [TeamController::class,'second'])->name('second');
 Route::get('third', [TeamController::class,'third'])->name('third');
 Route::get('all', [TeamController::class,'all'])->name('all');
-Route::get('fixtures', [TeamController::class,'fixtures'])->name('fixtures');
+Route::post('fixtures', [TeamController::class,'fixtures'])->name('fixtures');
 Route::get('fixtures2', [TeamController::class,'fixtures2'])->name('fixtures2');
 Route::get('fixtures3', [TeamController::class,'fixtures3'])->name('fixtures3');
+Route::post('fixtures4', [TeamController::class,'fixtures4'])->name('fixtures4');
 Route::get('resultsMenu', [TeamController::class,'resultsMenu'])->name('resultsMenu');
 Route::get('results', [TeamController::class,'results'])->name('results');
 Route::get('results2', [TeamController::class,'results2'])->name('results2');
@@ -50,5 +52,7 @@ Route::get('teamsScore', 'TeamController@showteamsByScore');
 Route::get('/games/create/select-category', 'GameController@selectCategory')->name('games.selectCategory');
 Route::get('/games/create/select-teams/{category}', 'GameController@selectTeams')->name('games.selectTeams');
 
+Route::post('/procesar-formulario', 'TeamController@procesar')->name('procesar-formulario');
 
+Route::get('/teams/{id}/category', 'TeamController@getCategory')->name('teams.getCategory');
 
