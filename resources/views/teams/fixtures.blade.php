@@ -11,7 +11,7 @@
                     @foreach ($teams as $team)
                         @if($team->id ==  $team1->id)
                             <h2 class="text-5xl font-bold text-white">{{$team->name}}</h2>
-                            <form method="POST" action="{{ route('fixtures5') }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
+                            <form method="POST" action="{{ route('fixtures5', ['id' => $team->id]) }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
                                 @csrf
                                 <div class="grid grid-cols-4">
                                     <div class="col-start-1">
@@ -76,7 +76,7 @@
                 <div class="text-center">
                     <form action="" onsubmit="return confirm('Are you sure send this forms?')" for="matches">
                         <div class="text-center">
-                            <button type="submit" class="mt-5 border-2 px-5 py-2 rounded-lg border-green-500 bg-gray-200 hover:bg-blue-400 hover:border-red-900 border-b-4 font-black translate-y-2 border-l-4" id="">Submit</button>
+                            <button type="submit" class="mt-5 border-2 px-5 py-2 rounded-lg border-green-500 bg-gray-200 hover:bg-blue-400 hover:border-red-900 border-b-4 font-black translate-y-2 border-l-4" id="">save changes</button>
                         </div>
                     </form>
                 </div>
@@ -87,7 +87,7 @@
                     @foreach ($teams as $team)
                         @if($team->id == $team2->id)
                             <h2 class="text-5xl font-bold text-white">{{$team->name}}</h2>
-                            <form method="POST" action="{{ route('fixtures5') }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
+                            <form method="POST" action="{{ route('fixtures5', ['id' => $team->id]) }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
     
                                 @csrf
                                 <div class="grid grid-cols-3 gap-4">

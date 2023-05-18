@@ -17,7 +17,7 @@
                 </div>
               </div>
               <div class="w-full p-4 md:w-1/2 lg:w-1/2">
-                <a href="{{route('fixtures')}}" class="relative block h-48 overflow-hidden rounded">
+                <a href="{{route('fixtures3')}}" class="relative block h-48 overflow-hidden rounded">
                   <img class="block h-full w-full object-cover object-center cursor-pointer" src="{{asset('/img/football2.jpg')}}" alt="Football loading="lazy" width="50" height="50"" />
                 </a>
                 <div class="mt-2">

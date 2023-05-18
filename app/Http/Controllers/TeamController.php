@@ -50,10 +50,6 @@ class TeamController extends Controller
         return view('teams.fixtures', compact('team1', 'team2', 'teams'));
     }
     public function fixtures2(){
-        //$teams = Team::all();
-        //dd($teams);
-        //return view('teams.fixtures2', ['teams' => $teams]);
-
         $teams = Team::all();
 
         return view('teams.fixtures2', compact('teams'));
@@ -82,8 +78,6 @@ class TeamController extends Controller
     public function results(){
         $teams = DB::table('teams')->orderByDesc('score')->get();
 
-        //$teams = Team::orderBy('score', 'desc')->paginate(25);
-
         return view('teams.results', compact('teams'));
     }
 
@@ -92,11 +86,13 @@ class TeamController extends Controller
 
         return view('teams.results2', compact('teams'));
     }
+
     public function results3(){
         $teams = DB::table('teams')->orderByDesc('score')->get();
 
         return view('teams.results3', compact('teams'));
     }
+
     public function create(){
         
         return view('teams.create');
@@ -157,7 +153,7 @@ class TeamController extends Controller
         $fouls_received = $request->input('fouls_received');
         $red_cards = $request->input('red_cards');
         $yellow_cards = $request->input('yellow_cards');
-        $state = $request->input('state');
+        $match_results = $request->input('match_results');
 
         // update stats from the team
         $team->goals += $goals;
@@ -165,10 +161,10 @@ class TeamController extends Controller
         $team->fouls_received += $fouls_received;
         $team->red_cards += $red_cards;
         $team->yellow_cards += $yellow_cards;
-        $team->state += $state;
+        $team->match_results += $match_results;
 
         // Get the new value of "score" column
-        $score = $team->score + ($goals * 5) - ($fouls_commited * 2) - ($red_cards * 4) - ($yellow_cards * 3) + ($state * 10);
+        $score = $team->score + ($goals * 5) - ($fouls_commited * 2) - ($red_cards * 4) - ($yellow_cards * 3) + ($match_results * 10);
 
         // update the "score" column
         $team->score = $score;
@@ -176,11 +172,8 @@ class TeamController extends Controller
         // Save all changes in the database
         $team->save();
 
-        // Redirect to the team page
-        //return redirect()->route('teams.show', ['id' => $id]);
-        //return view('teams.fixtures', compact('teams'));
-        return redirect()->route('teams.fixtures5');
-        //, ['id' => $id]
+        return redirect()->route('teams.fixtures5', ['id' => $id]);
+
     }
 
 }
