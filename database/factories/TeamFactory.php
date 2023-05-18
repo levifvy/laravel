@@ -29,12 +29,13 @@ class TeamFactory extends Factory
             'category'=> $this->faker->randomElement(['First category','Second category','Third category']),
 
             'goals' => $this->faker->numberBetween(0, 10),
-            'score' => $this->faker->numberBetween(0, 100),
+            
             'fouls_commited' => $this->faker->numberBetween(0, 15),
             'fouls_received' => $this->faker->numberBetween(0, 15),
             'red_cards' => $this->faker->numberBetween(0, 15),
-            'yellow_cards' => $this->faker->numberBetween(0, 15)
+            'yellow_cards' => $this->faker->numberBetween(0, 15),
             
+            'score' => $this->faker->numberBetween(0, 100),
 
 
         ];

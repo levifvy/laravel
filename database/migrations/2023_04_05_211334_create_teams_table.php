@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('fouls_received')->default(0);
             $table->integer('red_cards')->default(0);
             $table->integer('yellow_cards')->default(0);
-            $table->integer('state')->default(0);
+            $table->enum('match_results', [-1,0,1])->default(0);
             $table->integer('score')->default(100);
 
             $table->enum('category', ['First category', 'Second category', 'Third category']);
