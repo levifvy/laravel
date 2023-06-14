@@ -74,7 +74,7 @@
                     <h1 class="text-5xl font-bold text-yellow-500 bg-gradient-to-r from-yellow-500 to-red-500 p-2 rounded-full shadow-lg"><p class="text-8xl text-yellow-200">VS</p></h1>
                 </div>
                 <div class="text-center">
-                    <form action="" onsubmit="return confirm('Are you sure send this forms?')" for="matches">
+                    <form action="{{ route('fixtures5') }}" onsubmit="return confirm('Are you sure send this forms?')" for="matches">
                         <div class="text-center">
                             <button type="submit" class="mt-5 border-2 px-5 py-2 rounded-lg border-green-500 bg-gray-200 hover:bg-blue-400 hover:border-red-900 border-b-4 font-black translate-y-2 border-l-4" id="">save changes</button>
                         </div>

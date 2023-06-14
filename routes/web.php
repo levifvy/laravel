@@ -32,8 +32,8 @@ Route::match(['get', 'post'],'fixtures', [TeamController::class,'fixtures'])->na
 Route::get('fixtures2', [TeamController::class,'fixtures2'])->name('fixtures2');
 Route::get('fixtures3', [TeamController::class,'fixtures3'])->name('fixtures3');
 Route::match(['get', 'post'],'fixtures4', [TeamController::class,'fixtures4'])->name('fixtures4');
-//Route::match(['get', 'post'],'fixtures5', [TeamController::class,'fixtures5'])->name('fixtures5');
-Route::match(['get', 'post'],'/teams/{id}/fixtures5', [TeamController::class, 'fixtures5'])->name('fixtures5');
+Route::match(['get', 'post'],'fixtures5', [TeamController::class,'fixtures5'])->name('fixtures5');
+Route::match(['get', 'post'],'/teams/fixtures5', [TeamController::class, 'fixtures5'])->name('fixtures5');
 
 Route::get('resultsMenu', [TeamController::class,'resultsMenu'])->name('resultsMenu');
 Route::get('results', [TeamController::class,'results'])->name('results');

@@ -42,7 +42,7 @@ class TeamController extends Controller
 
         return view('teams.all', compact('teams'));
     }
-    public function fixtures(Request $request){
+    public function fixtures(Request $request ){
         $teams = Team::all();
         $team1 = Team::where('name', $request->team1_name)->firstOrFail();
         $team2 = Team::where('name', $request->team2_name)->firstOrFail();
