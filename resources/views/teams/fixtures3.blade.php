@@ -11,7 +11,7 @@
                     <div class="space-y-4 text-center">
                         <h2 class="mb-8 text-3xl text-cyan-300 font-bold">Create Match</h2>
                     </div>
-                    <form action="{{ route('fixtures') }}" method="post" onsubmit="return validateCategory()">
+                    <form action="{{ route('fixtures') }}" method="post" onsubmit="return validateForm()">
                         @csrf
                         <div class="form-group">
                             <div class="grid grid-row-3 gap-4 text-center">
@@ -63,15 +63,24 @@
 </div>
 
 <script>
-    function validateCategory() {
+    function validateForm() {
         var team1Select = document.getElementById('team1_name');
         var team2Select = document.getElementById('team2_name');
+        var team1Name = team1Select.value;
+        var team2Name = team2Select.value;
         var team1Category = team1Select.options[team1Select.selectedIndex].getAttribute('data-category');
         var team2Category = team2Select.options[team2Select.selectedIndex].getAttribute('data-category');
+
         if (team1Category !== team2Category) {
             alert("Warning: The selected teams have different categories.");
             return false; // Prevent form submission
         }
+
+        if (team1Name === team2Name) {
+            alert("Warning: The selected teams have the same name.");
+            return false; // Prevent form submission
+        }
+
         return true; // Allow form submission
     }
 </script>
