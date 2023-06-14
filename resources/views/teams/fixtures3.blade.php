@@ -78,10 +78,9 @@
 
         if (team1Name === team2Name) {
             alert("Warning: The selected teams have the same name.");
-            return false; // Prevent form submission
+            return false; 
         }
-
-        return true; // Allow form submission
+        return true; 
     }
 </script>
 
