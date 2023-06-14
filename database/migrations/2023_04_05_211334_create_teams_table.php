@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('match_results', [-1,0,1])->default(0);
             $table->integer('score')->default(100);
 
-            $table->enum('category', ['First category', 'Second category', 'Third category']);
+            $table->string('category');
 
             $table->timestamps();
 

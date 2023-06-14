@@ -35,27 +35,27 @@
                                     <div class="mb-4 flex justify-center">
                                         <label class="block text-gray-700 font-bold mb-2" for="goals">Goals:</label>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="goals" value="0" min="0">&nbsp
-                                        <span>{{ $team->goals }}</span>
+                                        <span title="The total amount of goals so far.">{{ $team->goals }}</span>
                                     </div>
                                     <div class="mb-4 flex justify-center">
                                         <label class="block text-gray-700 font-bold mb-2" for="fouls_commited">Fouls commited:</label>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="fouls_commited" value="0" min="0">&nbsp
-                                        <span>{{ $team->fouls_commited }}</span>
+                                        <span title="The total amount of fouls commited so far.">{{ $team->fouls_commited }}</span>
                                     </div>
                                     <div class="mb-4 flex justify-center"> 
                                         <label class="block text-gray-700 font-bold mb-2" for="fouls_received">Fouls received:</label>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="fouls_received" value="0" min="0">&nbsp
-                                        <span>{{ $team->fouls_received }}</span>
+                                        <span title="The total amount of fouls received so far.">{{ $team->fouls_received }}</span>
                                     </div>
                                     <div class="mb-4 flex justify-center">
                                         <label class="block text-gray-700 font-bold mb-2" for="red_cards">Red cards 🟥:</label>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="red_cards" value="0" min="0">&nbsp
-                                        <span>{{ $team->red_cards }}</span>
+                                        <span title="The total amount of red cards received so far.">{{ $team->red_cards }}</span>
                                     </div>
                                     <div class="mb-4 flex justify-center">
                                         <label class="block text-gray-700 font-bold mb-2" for="yellow_cards">Yellow cards 🟨:</label>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="yellow_cards" value="0" min="0">&nbsp
-                                        <span>{{ $team->yellow_cards }}</span>
+                                        <span title="The total amount of yellow cards received so far.">{{ $team->yellow_cards }}</span>
                                     </div>
                                 </div>
                             </form>
@@ -111,35 +111,35 @@
                                         </label>
                                     </div>
                                     <div class="mb-4 flex justify-center">
-                                        <span>{{ $team->goals }}</span>&nbsp
+                                        <span title="The total amount of goals so far.">{{ $team->goals }}</span>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="goals" value="0" min="0">
                                         <label class="block text-gray-700 font-bold mb-2" for="goals">
                                             &nbsp: Goals
                                         </label>
                                     </div>
                                     <div class="mb-4 flex justify-center">
-                                        <span>{{ $team->fouls_commited }}</span>&nbsp
+                                        <span title="The total amount of fouls commited so far.">{{ $team->fouls_commited }}</span>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="fouls_commited" value="0" min="0">
                                         <label class="block text-gray-700 font-bold mb-2" for="fouls_committed">
                                             &nbsp :Fouls committed
                                         </label>
                                     </div>
                                     <div class="mb-4 flex justify-center">
-                                        <span>{{ $team->fouls_received }}</span>&nbsp
+                                        <span title="The total amount of fouls received so far.">{{ $team->fouls_received }}</span>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="fouls_received" value="0" min="0">
                                         <label class="block text-gray-700 font-bold mb-2" for="fouls_received">
                                             &nbsp :Fouls received
                                         </label>
                                     </div>
                                     <div class="mb-4 flex justify-center">
-                                        <span>{{ $team->red_cards }}</span>&nbsp
+                                        <span title="The total amount of red cards received so far.">{{ $team->red_cards }}</span>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="red_cards" value="0" min="0">
                                         <label class="block text-gray-700 font-bold mb-2" for="red_cards">
                                             &nbsp :🟥 Red cards 
                                         </label>
                                     </div>
                                     <div class="mb-4 flex justify-center">
-                                        <span>{{ $team->yellow_cards }}</span>&nbsp
+                                        <span title="The total amount of yellow cards received so far.">{{ $team->yellow_cards }}</span>&nbsp
                                         <input class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="yellow_cards" value="0" min="0">
                                         <label class="block text-gray-700 font-bold mb-2" for="yellow_cards">
                                             &nbsp :🟨 Yellow cards

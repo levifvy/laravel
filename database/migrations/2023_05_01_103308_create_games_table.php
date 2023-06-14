@@ -27,10 +27,6 @@ return new class extends Migration
             $table->dateTime('start_time');
             $table->timestamps();
 
-            // $table->unsignedBigInteger('team1_id')->unique();
-            // $table->foreign('team1_id')->references('id')->on('teams')->onDelete('cascade')->onUpdate('cascade');
-             // $table->unsignedBigInteger('team2_id')->unique();
-            // $table->foreign('team2_id')->references('id')->on('teams')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
