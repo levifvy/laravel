@@ -66,7 +66,6 @@ class TeamController extends Controller
     public function fixtures3(){
 
         $teams = Team::all();
-        //$teams = Team::where('category', $category)->get();
 
         return view('teams.fixtures3', compact('teams'));
     }
