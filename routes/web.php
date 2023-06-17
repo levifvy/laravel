@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::resource('teams', TeamController::class);
 Route::resource('games', GameController::class);
+Route::resource('categories', CategoryController::class);
+
 
 Route::get('first', [TeamController::class,'first'])->name('first');
 Route::get('second', [TeamController::class,'second'])->name('second');
