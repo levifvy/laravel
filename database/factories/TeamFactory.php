@@ -5,8 +5,8 @@ namespace Database\Factories;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Database\Factories\FakerFactory;
-use Faker\Generator as Faker;
+
+use Faker\Factory as FakerFactory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Team>
@@ -23,7 +23,7 @@ class TeamFactory extends Factory
 
     public function definition(): array
     {
-        $name = $this->faker->name;
+        $name = FakerFactory::create()->name();
         return [
             'name' => $name,
             'slug' => Str::slug($name, '-'),

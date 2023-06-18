@@ -16,7 +16,10 @@ class CreateTeamsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug');
 
-            
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->text('description')->nullable();
             $table->integer('goals')->default(0);

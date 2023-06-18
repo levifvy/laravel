@@ -20,12 +20,12 @@ class CategoryFactory extends Factory
         $category = $this->faker->unique()->randomElement(['First category', 'Second category', 'Third category']);
 
         
-        while (Category::where('category', $category)->exists()) {
+        while (Category::where('name', $category)->exists()) {
             $category = $this->faker->unique()->randomElement(['First category', 'Second category', 'Third category']);
         }
 
         return [
-            'category' => $category,
+            'name' => $category,
         ];
     }
 }
