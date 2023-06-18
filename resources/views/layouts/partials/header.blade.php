@@ -30,7 +30,7 @@
                     <a href="{{route('contactUs.index')}}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('contactUs.index')? 'active':''}}">Contact</a>
                 </div>
             </div>
-            <a href="{{route('teams.create')}}" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">New Team</a>
+            <a href="{{route('teams.create')}}" class="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">New Team</a>
         </nav>
     </header>
 </body>

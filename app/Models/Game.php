@@ -10,6 +10,7 @@ use App\Models\category;
 class Game extends Model
 {
     use HasFactory;
+    protected $guarded = [];
    
     public function team1()
     {
