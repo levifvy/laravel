@@ -22,7 +22,7 @@
                                         <option value="">--------------- Select a team 1 ---------------</option>
                                         @foreach($teams as $team)
                                         <option value="{{ $team->name }}"
-                                            data-category="{{ $team->category }}">{{ $team->name }} -> {{ $team->category }}</option>
+                                            data-category="{{ $team->category }}">{{ $team->name }} -> {{ $team->category->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('team1')
@@ -44,7 +44,7 @@
                                         <option value="">--------------- Select a team 2 ---------------</option>
                                         @foreach($teams as $team)
                                         <option value="{{ $team->name }}"
-                                            data-category="{{ $team->category }}">{{ $team->name }} -> {{ $team->category }}</option>
+                                            data-category="{{ $team->category }}">{{ $team->name }} -> {{ $team->category->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('team2')

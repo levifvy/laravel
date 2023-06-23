@@ -2,12 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
+use App\Models\Team;
 use Faker\Factory as FakerFactory;
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Team>
  */
@@ -18,9 +16,6 @@ class TeamFactory extends Factory
      *
      * @return array<string, mixed>
      */
-
-     protected $model = Team::class;
-
     public function definition(): array
     {
         $name = FakerFactory::create()->name();

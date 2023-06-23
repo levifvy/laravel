@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
        
-        $categories = Category::orderBy('id', 'desc')->paginate(50);
+        $categories = Category::orderBy('id')->paginate(50);
         return view('categories.index', compact('categories'));
     }
 
@@ -30,7 +30,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        $categories = Category::all();
+
+        return view('categories.create', compact('categories'));
     }
 
     /**

@@ -15,7 +15,7 @@
                                 @csrf
                                 <div class="grid grid-cols-4">
                                     <div class="col-start-1">
-                                        <p class="text-gray-700 font-bold text-start">{{$team->category}}</p>
+                                        <p class="text-gray-700 font-bold text-start">{{$team->category->name}}</p>
                                     </div>
                                 </div>
                                 <div class="grid justify-items-end">
@@ -92,7 +92,7 @@
                                 @csrf
                                 <div class="grid grid-cols-3 gap-4">
                                     <div class="col-end-4">
-                                        <p class="text-gray-900 font-bold text-end">{{$team->category}}</p>
+                                        <p class="text-gray-900 font-bold text-end">{{$team->category->name}}</p>
                                     </div>
                                 </div>
                                 <div class="grid justify-items-start">

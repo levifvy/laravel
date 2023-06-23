@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Storeteam;
 use Illuminate\Support\Str;
@@ -16,6 +17,9 @@ class TeamController extends Controller
         $teams = Team::orderBy('id', 'desc')->paginate(50);
         
         return view('teams.index', compact('teams'));
+    }
+    public function create(){
+        return view('teams.create');
     }
     
     public function first(){
@@ -54,47 +58,46 @@ class TeamController extends Controller
 
         return view('teams.fixtures2', compact('teams'));
     }
-    public function fixtures4(Request $request){
-        $teams = Team::all();
-
-        $team1 = Team::where('name', $request->team1_name)->firstOrFail();
-        $team2 = Team::where('name', $request->team2_name)->firstOrFail();
-        
-    
-        return view('teams.fixtures4', compact('team1', 'team2', 'teams'));
-    }
     public function fixtures3(){
 
         $teams = Team::all();
 
         return view('teams.fixtures3', compact('teams'));
     }
-    public function resultsMenu(){
-        $teams = DB::table('teams')->orderByDesc('score')->get();
+    public function fixtures4(Request $request){
+        $teams = Team::all();
 
-        return view('teams.resultsMenu', compact('teams'));
+        $team1 = Team::where('name', $request->team1_name)->firstOrFail();
+        $team2 = Team::where('name', $request->team2_name)->firstOrFail();
+        
+        return view('teams.fixtures4', compact('team1', 'team2', 'teams'));
+    }
+   
+    public function resultsMenu(){
+        $categories = DB::table('categories')->get();
+        $teams = DB::table('teams')->get();
+        
+        return view('teams.resultsMenu', compact('teams', 'categories'));
     }
     public function results(){
+        $categories = DB::table('categories')->get();
         $teams = DB::table('teams')->orderByDesc('score')->get();
-
+        
         return view('teams.results', compact('teams'));
     }
 
     public function results2(){
+        $categories = DB::table('categories')->get();
         $teams = DB::table('teams')->orderByDesc('score')->get();
-
+        
         return view('teams.results2', compact('teams'));
     }
 
     public function results3(){
+        $categories = DB::table('categories')->get();
         $teams = DB::table('teams')->orderByDesc('score')->get();
 
         return view('teams.results3', compact('teams'));
-    }
-
-    public function create(){
-        
-        return view('teams.create');
     }
     
     public function store(StoreTeam $request){

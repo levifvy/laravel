@@ -17,7 +17,7 @@
                                     
                                     <div class="grid grid-cols-2 gap-4">
                                         <button class="group h-12 px-6 border-2 border-gray-300 rounded transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 flex items-center justify-center w-full flex flex-wrap">
-                                            <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base"><p><strong>{{$team->id}}</strong></p></span>
+                                            <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base"><p><strong>{{$team->category->name}}</strong></p></span>
                                         </button>
                                         <button class="group h-12 px-6 border-2 border-gray-300 rounded transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 flex items-center justify-center">
                                             <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base"><p><strong>Score: </strong>{{$team->score}}</p></span>

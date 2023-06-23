@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title','Teams')
+@section('title', 'Teams')
 
 @section('content')
 <div class="bg-image h-screen">
@@ -30,15 +30,12 @@
                             <h2 class="mb-8 text-2xl text-cyan-900 font-bold">List of football teams</h2>
                         </div>
                         <div class="mt-4 grid space-y-4">
-                            <a href="first" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 flex items-center justify-center">
-                                <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">First category</span>
-                            </a>
-                            <a href="second" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 flex items-center justify-center">
-                                <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">Second category</span>
-                            </a>
-                            <a href="third" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 flex items-center justify-center">
-                                <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">Third category</span>
-                            </a>
+                            @foreach (\App\Models\Category::all() as $category)
+                                <a href="{{ route('third', $category) }}" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 flex items-center justify-center">
+                                    <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">{{ $category->name }}</span>
+                                </a>
+                            @endforeach
+
                             <a href="all" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 flex items-center justify-center">
                                 <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">All categories</span>
                             </a>
@@ -51,9 +48,9 @@
 </div>
 <style>
     .bg-image {
-      background-image: url({{asset('/img/cancha6.jpg')}});
+      background-image: url({{ asset('/img/cancha6.jpg') }});
       background-repeat: no-repeat;
       background-size: cover;
     }
-  </style>
+</style>
 @endsection

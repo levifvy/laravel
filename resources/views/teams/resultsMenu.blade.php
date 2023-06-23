@@ -25,21 +25,14 @@
                         </div>
                         <div class="mt-16 grid space-y-4">
                                 
-                            <a href="results" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
-                                <div class="relative flex items-center space-x-4 justify-center">  
-                                    <span class="block w-max font-semibold tracking-wide text-gray-900 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base"><strong>Results "First Category"</strong></span>
-                                </div>
-                            </a>
-                            <a href="results2" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
-                                <div class="relative flex items-center space-x-4 justify-center">
-                                    <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base"><strong>Results "Second Category"</strong></span>
-                                </div>
-                            </a>
-                            <a href="results3" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
-                                <div class="relative flex items-center space-x-4 justify-center">
-                                    <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base"><strong>Results "Third Category"</strong></span>
-                                </div>
-                            </a>
+                            @foreach ($categories as $category)
+                                <a href="results" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
+                                    <div class="relative flex items-center space-x-4 justify-center">  
+                                        <span class="block w-max font-semibold tracking-wide text-gray-900 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base"><strong>{{ $category->name }}</strong></span>
+                                    </div>
+                                </a>
+                            @endforeach
+                            
                         </div>
                     </div>
                 </div>
