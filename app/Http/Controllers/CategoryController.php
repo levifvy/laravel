@@ -20,8 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
        
-        $categories = Category::orderBy('id')->paginate(50);
         return view('categories.index', compact('categories'));
     }
 
@@ -51,7 +51,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+        $categories = DB::table('categories')->get();
+        $teams = DB::table('teams')->get();
+
+        return view('categories.show', compact('category', 'teams', 'categories'));
     }
 
     /**

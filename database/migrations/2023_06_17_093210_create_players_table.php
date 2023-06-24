@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->integer('age');
+            $table->string('image')->nullable();
             $table->string('position');
             $table->string('nif')->unique();
             

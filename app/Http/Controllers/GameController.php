@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Requests\Storeteam;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB
 
 class GameController extends Controller
 {
