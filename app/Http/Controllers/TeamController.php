@@ -18,7 +18,9 @@ class TeamController extends Controller
     }
 
     public function create(){
-        return view('teams.create');
+        $categories = Category::all();
+        Category::pluck('name', 'id');
+        return view('teams.create', compact('categories'));
     }
     
     public function store(StoreTeam $request){
@@ -26,8 +28,11 @@ class TeamController extends Controller
             'slug' => Str::slug($request->name),
           ]);
 
+          $categories = Category::all();
+            Category::pluck('name', 'id');
+
         $team = Team::create($request->all());
-        return redirect()->route('teams.show', $team);
+        return redirect()->route('teams.show', $team, compact('categories'));
     }
     
     public function show(Team $team){
@@ -38,7 +43,7 @@ class TeamController extends Controller
         return view('teams.edit', compact('team'));
     }
 
-    public function update(Request $request, Team $team){
+    public function update(Request $request, Team $team, $id){
         $request->merge([
             'slug' => Str::slug($request->name),
           ]);
@@ -48,6 +53,24 @@ class TeamController extends Controller
             'description' => 'required',
             'category' => 'required',
         ]);
+
+        $team = Team::find($id);
+        $team->state = $request->state;
+        $team->goals = $request->goals;
+        $team->fouls_commited = $request->fouls_commited;
+        $team->fouls_received = $request->fouls_received;
+        $team->red_cards = $request->red_cards;
+        $team->yellow_cards = $request->yellow_cards;
+
+        $team->state = $team->state ?? null;
+        $team->goals = $team->goals ?? null;
+        $team->fouls_commited = $team->fouls_commited ?? null;
+        $team->fouls_received = $team->fouls_received ?? null;
+        $team->red_cards = $team->red_cards ?? null;
+        $team->yellow_cards = $team->yellow_cards ?? null;
+
+        $team->save();
+
         $team->update($request->all());
         return redirect()->route('teams.show', $team);
     }

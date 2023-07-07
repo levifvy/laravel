@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -24,12 +23,7 @@ class FixtureController extends Controller
 
         return view('teams.fixtures2', compact('teams'));
     }
-    public function fixtures3(){
-
-        $teams = Team::all();
-
-        return view('teams.fixtures3', compact('teams'));
-    }
+    
     public function fixtures4(Request $request){
         $teams = Team::all();
 

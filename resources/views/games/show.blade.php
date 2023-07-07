@@ -1,41 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.plantilla')
 
-@section('template_title')
-    {{ $game->name ?? "{{ __('Show') Game" }}
-@endsection
+@section('title', 'Game' . 'show')
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Game</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('games.index') }}"> {{ __('Back') }}</a>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Team1 Id:</strong>
-                            {{ $game->team1_id }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Team2 Id:</strong>
-                            {{ $game->team2_id }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Start Time:</strong>
-                            {{ $game->start_time }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <h1>Game Details</h1>
+        <div>
+            <strong>Category:</strong>
+            {{ $game->category->name }}
         </div>
-    </section>
+        <div>
+            <strong>Team 1:</strong>
+            {{ $game->team1->name }} ({{ $game->team1->category->name }})
+        </div>
+        <div>
+            <strong>Team 2:</strong>
+            {{ $game->team2->name }} ({{ $game->team2->category->name }})
+        </div>
+        <div>
+            <strong>Winner:</strong>
+            @if($game->game_winner == '-1')
+                Draw
+            @elseif($game->game_winner == '0')
+                No winners
+            @elseif($game->game_winner == '1')
+                Team 1
+            @elseif($game->game_winner == '2')
+                Team 2
+            @endif
+        </div>
+        <div>
+            <strong>Date:</strong>
+            {{ $game->game_date }}
+        </div>
+    </div>
 @endsection

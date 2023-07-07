@@ -31,12 +31,9 @@ Route::get('/', HomeController::class)->name('home');
 Route::resource('teams', TeamController::class);
 Route::resource('games', GameController::class);
 Route::resource('categories', CategoryController::class);
+Route::resource('players', PlayerController::class);
 
-Route::resources([
-    'players' => 'App\Http\Controllers\PlayerController'
-]);
-
-
+Route::view('sites','sites')->name('sites');
 Route::view('about','about')->name('about');
 Route::view('rules','rules')->name('rules');
 Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
@@ -50,10 +47,8 @@ Route::get('all', [TeamListController::class,'all'])->name('all');
 
 Route::match(['get', 'post'],'fixtures', [FixtureController::class,'fixtures'])->name('fixtures');
 Route::get('fixtures2', [FixtureController::class,'fixtures2'])->name('fixtures2');
-Route::get('fixtures3', [FixtureController::class,'fixtures3'])->name('fixtures3');
 Route::match(['get', 'post'],'fixtures4', [FixtureController::class,'fixtures4'])->name('fixtures4');
 Route::match(['get', 'post'],'fixtures5', [FixtureController::class,'fixtures5'])->name('fixtures5');
-Route::match(['get', 'post'],'/teams/fixtures5', [FixtureController::class, 'fixtures5'])->name('fixtures5');
 
 Route::get('resultsMenu', [ResultController::class,'resultsMenu'])->name('resultsMenu');
 Route::get('results', [ResultController::class,'results'])->name('results');

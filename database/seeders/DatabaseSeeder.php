@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Team;
 use App\Models\User;
 Use App\Models\Category;
 use App\Models\Player;
+use App\Models\Game;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Category::factory(3)->create();
         Player::factory(20)->create();
+        Game::factory(10)->create();
     }
 }

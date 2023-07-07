@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.plantilla')
 
 @section('template_title')
     {{ __('Update') }} Game
@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="content container-fluid">
-        <div class="">
+        <div class="row">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
@@ -16,12 +16,13 @@
                         <span class="card-title">{{ __('Update') }} Game</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('games.update', $game->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ route('games.update', $game->id) }}" role="form" enctype="multipart/form-data">
                             @csrf
-
-                            @include('game.form')
-
+                            @method('PUT')
+                            @include('games.form')
+                            <div class="box-footer mt20">
+                                <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -29,3 +30,4 @@
         </div>
     </section>
 @endsection
+

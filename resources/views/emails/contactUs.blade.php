@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <h1>Email Address</h1>
+    <h1>{{$contact['subject']}}</h1>
   
     <p><strong>Name: </strong>{{$contact['name']}}</p>
     <p><strong>Email: </strong>{{$contact['email']}}</p>
