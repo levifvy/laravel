@@ -11,17 +11,24 @@ use Illuminate\Support\Facades\DB;
 
 class FixtureController extends Controller
 {
+    public function create(Request $request, Category $category)
+    {
+        $categories = DB::table('categories')->get();
+        $teams = DB::table('teams')->get();
+        
+        return view('fixtures.create', compact('category', 'teams', 'categories'));
+    }
     public function fixtures(Request $request ){
         $teams = Team::all();
         $team1 = Team::where('name', $request->team1_name)->firstOrFail();
         $team2 = Team::where('name', $request->team2_name)->firstOrFail();
         
-        return view('teams.fixtures', compact('team1', 'team2', 'teams'));
+        return view('fixtures.fixtures', compact('team1', 'team2', 'teams'));
     }
     public function fixtures2(){
         $teams = Team::all();
 
-        return view('teams.fixtures2', compact('teams'));
+        return view('fixtures.fixtures2', compact('teams'));
     }
     
     public function fixtures4(Request $request){
@@ -30,10 +37,34 @@ class FixtureController extends Controller
         $team1 = Team::where('name', $request->team1_name)->firstOrFail();
         $team2 = Team::where('name', $request->team2_name)->firstOrFail();
         
-        return view('teams.fixtures4', compact('team1', 'team2', 'teams'));
+        return view('fixtures.fixtures4', compact('team1', 'team2', 'teams'));
     }
-    public function fixtures5(Request $request, $id)
-    {
+
+    // public function fixtures5(Request $request)
+    // {
+        
+    //     $teams = Team::all();
+    //     $categories = Category::all();
+
+    //     $category_id = $request->input('category_id');
+    //     $goals = $request->input('goals');
+    //     $fouls_commited = $request->input('fouls_commited');
+    //     $fouls_received = $request->input('fouls_received');
+    //     $red_cards = $request->input('red_cards');
+    //     $yellow_cards = $request->input('yellow_cards');
+
+        
+    //     return view('fixtures.fixtures5', compact('teams','categories'))->with([
+    //         'category_id' => $category_id,
+    //         'goals' => $goals,
+    //         'fouls_commited' => $fouls_commited,
+    //         'fouls_received' => $fouls_received,
+    //         'red_cards' => $red_cards,
+    //         'yellow_cards' => $yellow_cards
+    //     ]);
+    // }
+
+    public function fixtures5(Request $request, $id){
         // get team to modify
         $team = Team::findOrFail($id);
 
@@ -62,6 +93,12 @@ class FixtureController extends Controller
         // Save all changes in the database
         $team->save();
 
-        return redirect()->route('teams.fixtures5', ['id' => $id]);
+        return redirect()->route('fixtures.fixtures5', ['id' => $id]);
     }
+
+
+
+    
 }
+
+

@@ -8,6 +8,7 @@ Use App\Models\Category;
 use App\Models\Player;
 use App\Models\Game;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title','results')
+@section('title','Result.results')
 
 @section('style')
   <link rel="stylesheet" href="{{asset('resources/css/style.css')}}">

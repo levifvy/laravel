@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title','Teams fixtures')
+@section('title','Fixture.create')
 
 @section('content')
 <div class="bg-gradient-to-r from-blue-900 to-red-900">
@@ -15,7 +15,7 @@
                                 @csrf
                                 <div class="grid grid-cols-4">
                                     <div class="col-start-1">
-                                        <p class="text-gray-700 font-bold text-start">{{$team->category->name}}</p>
+                                        <p class="text-gray-700 font-bold text-start">{{$team->name}}</p>
                                     </div>
                                 </div>
                                 <div class="grid justify-items-end">
@@ -85,14 +85,14 @@
             <div>
                 <div class="text-center">
                     @foreach ($teams as $team)
-                        @if($team->id == $team2->id)
+                        {{-- @if($team->id == $team2->id) --}}
                             <h2 class="text-5xl font-bold text-white">{{$team->name}}</h2>
                             <form method="POST" action="{{ route('fixtures5', ['id' => $team->id]) }}" class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" for="matches">
     
                                 @csrf
                                 <div class="grid grid-cols-3 gap-4">
                                     <div class="col-end-4">
-                                        <p class="text-gray-900 font-bold text-end">{{$team->category->name}}</p>
+                                        <p class="text-gray-900 font-bold text-end">{{$team->name}}</p>
                                     </div>
                                 </div>
                                 <div class="grid justify-items-start">
@@ -148,7 +148,7 @@
                                 </div>
                                 
                             </form>
-                        @endif
+                        {{-- @endif --}}
                     @endforeach
                 </div>
             </div>

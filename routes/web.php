@@ -30,6 +30,7 @@ Route::resource('teams', TeamController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('players', PlayerController::class);
 Route::resource('games', GameController::class);
+Route::resource('fixtures', FixtureController::class);
 
 Route::view('sites','sites')->name('sites');
 Route::view('about','about')->name('about');
@@ -39,7 +40,7 @@ Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.
 Route::get('teams/by_category', [TeamController::class, 'getTeamsByCategory'])->name('teams.by_category');
 Route::get('all', [TeamListController::class,'all'])->name('all');
 
-Route::match(['get', 'post'],'fixtures', [FixtureController::class,'fixtures'])->name('fixtures');
+//Route::match(['get', 'post'],'fixtures', [FixtureController::class,'fixtures'])->name('fixtures');
 Route::get('fixtures2', [FixtureController::class,'fixtures2'])->name('fixtures2');
 Route::match(['get', 'post'],'fixtures4', [FixtureController::class,'fixtures4'])->name('fixtures4');
 Route::match(['get', 'post'],'fixtures5', [FixtureController::class,'fixtures5'])->name('fixtures5');

@@ -22,7 +22,7 @@ class TeamFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name, '-'),
-            'category_id' => $this->faker->numberBetween(1, 3),
+            'category_id' => $this->faker->numberBetween(1, 5),
             'description' => $this->faker->paragraph(),
             'goals' => $this->faker->numberBetween(0, 10),
             'fouls_commited' => $this->faker->numberBetween(0, 15),

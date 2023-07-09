@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title','Teams fixtures4')
+@section('title','Fixture.fixtures4')
 
 @section('content')
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Game;
 use App\Models\Category;
+use App\Models\Player;
 
 class Team extends Model
 {
@@ -34,5 +35,10 @@ class Team extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function players()
+    {
+        return $this->hasMany(Player::class);
     }
 }
