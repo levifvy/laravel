@@ -9,7 +9,6 @@ use App\Http\Requests\Storeteam;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-
 class TeamController extends Controller
 {
     public function index(){
@@ -24,60 +23,49 @@ class TeamController extends Controller
     }
     
     public function store(StoreTeam $request){
-        $request->merge([
-            'slug' => Str::slug($request->name),
-          ]);
-
-          $categories = Category::all();
-            Category::pluck('name', 'id');
-
-        $team = Team::create($request->all());
-        return redirect()->route('teams.show', $team, compact('categories'));
-    }
+        $validatedData = $request->validated();
+        $team = new Team();
+        $team->category_id = $validatedData['category_id'];
+        $team->name = $validatedData['name'];
+        $team->description = $validatedData['description'];
+        $team->slug = Str::slug($validatedData['name']);
+        $team->save();
+        return redirect()->route('teams.show', $team);
+        }
     
     public function show(Team $team){
         return view('teams.show', compact('team'));
     }
 
     public function edit(Team $team){
-        return view('teams.edit', compact('team'));
+        $categories = Category::all();
+        Category::pluck('name', 'id');
+        $teams = Team::all();
+        Team::pluck('name', 'id');
+        return view('teams.edit', compact('team', 'categories', 'teams'));
     }
 
-    public function update(Request $request, Team $team, $id){
-        $request->merge([
-            'slug' => Str::slug($request->name),
-          ]);
-        
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'category' => 'required',
-        ]);
-
-        $team = Team::find($id);
-        $team->state = $request->state;
-        $team->goals = $request->goals;
-        $team->fouls_commited = $request->fouls_commited;
-        $team->fouls_received = $request->fouls_received;
-        $team->red_cards = $request->red_cards;
-        $team->yellow_cards = $request->yellow_cards;
-
-        $team->state = $team->state ?? null;
-        $team->goals = $team->goals ?? null;
-        $team->fouls_commited = $team->fouls_commited ?? null;
-        $team->fouls_received = $team->fouls_received ?? null;
-        $team->red_cards = $team->red_cards ?? null;
-        $team->yellow_cards = $team->yellow_cards ?? null;
-
+    public function update(Request $request, Team $team){
+        $team->category_id = $request->category_id;
+        $team->name = $request->name;
+        $team->description = $request->description;
+    
         $team->save();
 
-        $team->update($request->all());
         return redirect()->route('teams.show', $team);
     }
      
     public function destroy(Team $team){
         $team->delete();
         return redirect()->route('teams.index');
+    }
+
+    public function getTeamsByCategory(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+        $teams = Team::where('category_id', $categoryId)->get();
+        
+        return response()->json(['teams' => $teams]);
     }
 
 }

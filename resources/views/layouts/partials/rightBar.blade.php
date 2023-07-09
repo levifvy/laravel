@@ -4,7 +4,8 @@
     <a href="{{route('categories.create')}}" class="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded text-center">New Category</a><br/>
     <a href="{{route('games.create')}}" class="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded text-center">New Game</a><br/>
     <a href="{{route('teams.create')}}" class="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded text-center">New Team</a><br/>
-    <a href="{{route('teams.create')}}" class="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded text-center">New Player</a>
+    <a href="{{route('teams.create')}}" class="bg-gray-500 hover:bg-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded text-center">New Player</a><br/><br/>
+    <a href="{{route('teams.index')}}" class="bg-blue-500 hover:bg-black text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded text-center">Search teams</a>
 </div>
 <style>
     ::-webkit-scrollbar {

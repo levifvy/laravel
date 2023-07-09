@@ -3,22 +3,21 @@
 @section('title', 'Teams.create')
 
 @section('content')
-    <div class="relative py-16 bg-gradient-to-br from-sky-50 to-gray-200">
-        <div class="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
+<div class="relative py-8 bg-gradient-to-br from-cyan-300 to-white">
+        <div class="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-20">
             <div class="m-auto md:w-8/12 lg:w-6/12 xl:w-6/12">
                 <div class="rounded-xl bg-white shadow-xl">
-                    <div class="p-6 sm:p-16">
+                    <div class="p-6 sm:p-8">
                         <div class="space-y-4">
                             <h2 class="mb-8 text-2xl text-cyan-900 font-bold">Register your team:</h2>
                         </div>
-
                         <form action="{{ route('teams.store') }}" method="POST" class="mx-5 my-5">
                             @csrf
-                            <h1 class="text-2xl font-semibold mt-5">Category:</h1>
+                            <h1 class="text-xl font-semibold mt-5">Category:</h1>
                             <p class="text-black text-sm font-normal flex gap gap-2 pt-2">
                                 <div class="relative">
                                     <select class="group h-10 px-6 border-2 border-gray-300 rounded-lg transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
-                                        name="category->id">
+                                        name="category_id">
                                        
                                         <option value="" disabled selected>Select one option</option>
                                         @foreach ($categories as $category)
@@ -32,7 +31,7 @@
                                     @enderror
                                 </div>
                             </p>
-
+                            <br>
                             <label class="relative block p-3 border-2 border-gray-500 transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 rounded"
                                 htmlFor="name">
                                 <span class="text-md font-semibold text-zinc-900" htmlFor="name">Team Name</span>

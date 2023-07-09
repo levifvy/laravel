@@ -16,6 +16,7 @@
     </style>
 </head>
 
+<body>
     @include('layouts.partials.header')
 
     <div class="flex flex-1">
@@ -29,5 +30,8 @@
     </div>
 
     @include('layouts.partials.footer')
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
 
 </html>

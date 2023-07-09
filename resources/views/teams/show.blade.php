@@ -3,11 +3,11 @@
 @section('title', 'Team' . $team->name)
 
 @section('content')
-    <div class="relative py-16 bg-gradient-to-br from-sky-50 to-gray-200">  
+    <div class="relative py-8 bg-white">  
         <div class="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
             <div class="m-auto md:w-8/12 lg:w-6/12 xl:w-6/12">
-                <div class="rounded-xl bg-white shadow-xl">
-                    <div class="p-6 sm:p-16">
+                <div class="rounded-xl bg-gradient-to-br from-teal-500 to-fuchsia-500 shadow-xl">
+                    <div class="p-6 sm:p-8">
                         <div class="space-y-4">
                             <h2 class="mb-8 text-2xl text-cyan-900 font-bold"><strong>{{$team->name}}</strong></h2>
                         </div>
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-4 mt-4 justify-center">
-                                <a href="{{route('teams.index')}}" class="py-2 px-4 bg-gray-400 text-white rounded-lg hover:bg-blue-500">Back to Teams</a>
+                                <a href="{{route('categories.index')}}" class="py-2 px-4 bg-gray-400 text-white rounded-lg hover:bg-blue-500">Back to Teams</a>
                                 <a href="{{route('teams.edit', $team)}}" class="py-2 px-4 bg-gray-400 text-white rounded-lg hover:bg-blue-500">Edit Team</a>
                                 <form action="{{route('teams.destroy', $team)}}" method="POST" onsubmit="return confirm('Are you sure to delete this team: {{$team->name}}?')">
                                     @csrf

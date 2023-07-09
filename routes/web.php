@@ -14,7 +14,6 @@ use App\Http\Controllers\FixtureController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TeamListController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,22 +26,17 @@ use App\Http\Controllers\TeamListController;
 */
 
 Route::get('/', HomeController::class)->name('home');
-
 Route::resource('teams', TeamController::class);
-Route::resource('games', GameController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('players', PlayerController::class);
+Route::resource('games', GameController::class);
 
 Route::view('sites','sites')->name('sites');
 Route::view('about','about')->name('about');
 Route::view('rules','rules')->name('rules');
 Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
 Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');
-
-
-Route::get('first', [TeamListController::class,'first'])->name('first');
-Route::get('second', [TeamListController::class,'second'])->name('second');
-Route::get('third', [TeamListController::class,'third'])->name('third');
+Route::get('teams/by_category', [TeamController::class, 'getTeamsByCategory'])->name('teams.by_category');
 Route::get('all', [TeamListController::class,'all'])->name('all');
 
 Route::match(['get', 'post'],'fixtures', [FixtureController::class,'fixtures'])->name('fixtures');
