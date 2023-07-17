@@ -7,6 +7,7 @@
   <section class="grid justify-center items-start bg-transparent from-green-300 to-purple-300 min-h-screen body-font">
     <h1 id="welcome-message" class="text-6xl font-bold mb-4 text-white gradient-text absolute top-50 left-1/2 transform -translate-x-1/2 text-center" style="text-shadow: 2px 2px 0px #000;">Welcome<br>to<br>Manager Football Teams</h1>
   </section>
+  
 </div>
 
 <style>

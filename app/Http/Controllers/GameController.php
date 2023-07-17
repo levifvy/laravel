@@ -80,6 +80,7 @@ class GameController extends Controller
         return view('games.show', compact('game', 'categories', 'teams'));
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -91,9 +92,7 @@ class GameController extends Controller
         $categories = Category::all();
         $teams = Team::all();
 
-        $teamsByCategory = $categories->mapWithKeys(function ($category) use ($teams) {
-            return [$category->id => $teams->where('category_id', $category->id)->pluck('name', 'id')->toArray()];
-        });
+        $teamsByCategory = Team::all()->groupBy('category_id');
 
         
         return view('games.edit', compact('game', 'categories', 'teams', 'teamsByCategory'));
@@ -116,7 +115,6 @@ class GameController extends Controller
             'category_id' => 'required',
             'team1_id' => 'required',
             'team2_id' => 'required',
-            'game_winner' => 'required',
             'game_date' => 'required|date',
         ]);
 
@@ -124,7 +122,6 @@ class GameController extends Controller
         $game->category_id = $request->category_id;
         $game->team1_id = $request->team1_id;
         $game->team2_id = $request->team2_id;
-        $game->game_winner = $request->game_winner;
         $game->game_date = $request->game_date;
         $game->save();
 

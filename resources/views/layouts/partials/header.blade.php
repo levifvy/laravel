@@ -19,13 +19,15 @@
                     </div>
                 </a>
             </div>
+            
+            
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto">
                 <div class="text-xl lg:flex-grow flex justify-center">
                     <a href="{{route('home')}}"            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('home') ? 'active':''}}">Home</a>
                     <a href="{{route('rules')}}"           class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('rules') ? 'active':''}}">Rules</a>
                     <a href="{{route('categories.index')}}"     class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('categories.index*') ? 'active':''}}">Teams</a>
                     <a href="{{route('games.index')}}"        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('games.index*') ? 'active':''}}">Games</a>
-                    <a href="{{route('resultsMenu')}}"     class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('resultsMenu') ? 'active':''}}">Results</a>
+                    <a href="{{route('results.index')}}"     class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('resultsMenu') ? 'active':''}}">Results</a>
                     <a href="{{route('about')}}"           class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('about') ? 'active':''}}">About</a>
                     <a href="{{route('contactUs.index')}}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{request()->routeIs('contactUs.index')? 'active':''}}">Contact</a>
                 </div>

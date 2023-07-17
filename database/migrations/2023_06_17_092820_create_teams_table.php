@@ -27,12 +27,13 @@ class CreateTeamsTable extends Migration
             $table->integer('fouls_received')->default(0);
             $table->integer('red_cards')->default(0);
             $table->integer('yellow_cards')->default(0);
+            $table->integer('match_results')->default(0);
             $table->integer('score')->default(100);
 
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

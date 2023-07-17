@@ -60,12 +60,67 @@ class TeamController extends Controller
         return redirect()->route('teams.index');
     }
 
-    public function getTeamsByCategory(Request $request)
+    public function storeResults(Request $request)
     {
-        $categoryId = $request->input('category_id');
-        $teams = Team::where('category_id', $categoryId)->get();
-        
-        return response()->json(['teams' => $teams]);
+        $rules = [
+            'team_id1' => 'required|exists:teams,id',
+            'category_id1' => 'required|exists:categories,id',
+            'goals1' => 'integer',
+            'fouls_commited1' => 'integer',
+            'fouls_received1' => 'integer',
+            'red_cards1' => 'integer',
+            'yellow_cards1' => 'integer',
+            'team_id2' => 'required|exists:teams,id',
+            'category_id2' => 'required|exists:categories,id',
+            'goals2' => 'integer',
+            'fouls_commited2' => 'integer',
+            'fouls_received2' => 'integer',
+            'red_cards2' => 'integer',
+            'yellow_cards2' => 'integer',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $team1 = Team::find($validatedData['team_id1']);
+        $team2 = Team::find($validatedData['team_id2']);
+
+        // Increment team1 stats
+        $team1->goals += $validatedData['goals1'];
+        $team1->fouls_commited += $validatedData['fouls_commited1'];
+        $team1->fouls_received += $validatedData['fouls_received1'];
+        $team1->red_cards += $validatedData['red_cards1'];
+        $team1->yellow_cards += $validatedData['yellow_cards1'];
+        $team1->match_results += $this->calculateMatchResult($validatedData['goals1'], $validatedData['goals2']);
+        $team1->score = $this->calculateScore($team1);
+        $team1->save();
+
+        // Increment team2 stats
+        $team2->goals += $validatedData['goals2'];
+        $team2->fouls_commited += $validatedData['fouls_commited2'];
+        $team2->fouls_received += $validatedData['fouls_received2'];
+        $team2->red_cards += $validatedData['red_cards2'];
+        $team2->yellow_cards += $validatedData['yellow_cards2'];
+        $team2->match_results += $this->calculateMatchResult($validatedData['goals2'], $validatedData['goals1']);
+        $team2->score = $this->calculateScore($team2);
+        $team2->save();
+
+        return redirect()->route('results.index')->with('success', 'Results created successfully');
+    }
+
+    private function calculateMatchResult($goals1, $goals2)
+    {
+        if ($goals1 > $goals2) {
+            return 1; // Team 1 wins
+        } elseif ($goals1 < $goals2) {
+            return -1; // Team 2 wins
+        } else {
+            return 0; // Draw
+        }
+    }
+
+    private function calculateScore($team)
+    {
+        return ($team->goals * 5) - ($team->fouls_commited * 2) - ($team->red_cards * 4) - ($team->yellow_cards * 3) + ($team->match_results * 10);
     }
 
 }

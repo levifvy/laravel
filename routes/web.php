@@ -24,31 +24,17 @@ use App\Http\Controllers\TeamListController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', HomeController::class)->name('home');
 Route::resource('teams', TeamController::class);
+Route::post('teams/results', [TeamController::class, 'storeResults'])->name('teams.storeResults');
 Route::resource('categories', CategoryController::class);
 Route::resource('players', PlayerController::class);
 Route::resource('games', GameController::class);
-Route::resource('fixtures', FixtureController::class);
+Route::resource('results', ResultController::class);
+Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
+Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');
+Route::get('all', [TeamListController::class,'all'])->name('all');
 
 Route::view('sites','sites')->name('sites');
 Route::view('about','about')->name('about');
 Route::view('rules','rules')->name('rules');
-Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
-Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');
-Route::get('teams/by_category', [TeamController::class, 'getTeamsByCategory'])->name('teams.by_category');
-Route::get('all', [TeamListController::class,'all'])->name('all');
-
-//Route::match(['get', 'post'],'fixtures', [FixtureController::class,'fixtures'])->name('fixtures');
-Route::get('fixtures2', [FixtureController::class,'fixtures2'])->name('fixtures2');
-Route::match(['get', 'post'],'fixtures4', [FixtureController::class,'fixtures4'])->name('fixtures4');
-Route::match(['get', 'post'],'fixtures5', [FixtureController::class,'fixtures5'])->name('fixtures5');
-
-Route::get('resultsMenu', [ResultController::class,'resultsMenu'])->name('resultsMenu');
-Route::get('results', [ResultController::class,'results'])->name('results');
-Route::get('results2', [ResultController::class,'results2'])->name('results2');
-Route::get('results3', [ResultController::class,'results3'])->name('results3');
-
-
-

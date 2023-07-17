@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Player;
-
+use App\Models\Team;
 
 class PlayerController extends Controller
 {
@@ -28,7 +28,12 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        return view('players.create');
+        $teams = DB::table('teams')
+            ->join('categories', 'teams.category_id', '=', 'categories.id')
+            ->select('teams.*', 'categories.name as category_name')
+            ->get();
+
+        return view('players.create', compact('teams'));
     }
 
     /**
@@ -72,7 +77,8 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        return view('players.edit', compact('player'));
+        $teams = Team::all();
+        return view('players.edit', compact('player', 'teams'));
     }
 
     /**

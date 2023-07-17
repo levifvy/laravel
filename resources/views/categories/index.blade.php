@@ -6,10 +6,10 @@
 <div class="bg-image h-screen">
     <div class="grid place-items-center z-9">
         <div class="w-full lg:w-3/6">
-                    <div class="bg-white shadow-md rounded my-6">
+                    <div class="bg-white shadow-md rounded-lg my-6">
                         <table class="min-w-max w-full table-auto">
                             <thead>
-                                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal rounded-lg">
                                     <th class="py-3 px-6 text-left">Categories & Teams</th>
                                     <th class="py-3 px-6 text-center">Actions</th>
                                 </tr>
@@ -53,16 +53,26 @@
                                                         {{ __('Edit') }}
                                                     </div>
                                                 </a>
-                                                <form action="{{ route('categories.destroy', $category) }}" method="POST" class="d-inline" title="delete">
+                                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline" id="deleteForm{{ $category->id }}" title="delete">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this category?')">
+                                                    <button type="button" class="btn btn-danger btn-sm" onclick="showConfirmationPopup('{{ $category->id }}')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                         </svg>
                                                         {{ __('Delete') }}
                                                     </button>
                                                 </form>
+                                                
+                                                <div id="confirmationPopup{{ $category->id }}" class="confirmation-popup" style="display: none;">
+                                                    <div class="font-bold text-2xl">
+                                                        <p>You will lose all teams contained in this category.</p>
+                                                        <p>Are you sure you want to delete this category?</p>
+                                                    </div>
+                                                    <br>
+                                                    <button type="button" onclick="confirmDelete('{{ $category->id }}')">Yes</button>
+                                                    <button type="button" onclick="hideConfirmationPopup('{{ $category->id }}')">No</button>
+                                                </div>                                            
                                             </div>
                                         </td>
                                     </tr>
@@ -77,9 +87,55 @@
 
 <style>
     .bg-image {
-      background-image: url({{ asset('/img/cancha6.jpg') }});
-      background-repeat: no-repeat;
-      background-size: cover;
+        background-image: url({{ asset('/img/cancha6.jpg') }});
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
+<style>
+    .confirmation-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #BB1F04;
+        padding: 20px;
+        border: solid 2px #F162E8;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        color: #fff;
+    }
+
+    .confirmation-popup button {
+        background-color: #373590;
+        color: #fff;
+        border: solid 2px #000;
+        padding: 8px 16px;
+        margin-right: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .confirmation-popup button:hover {
+        background-color: #79797E;
+    }
+</style>
+<script>
+    function showConfirmationPopup(categoryId) {
+        document.getElementById('confirmationPopup' + categoryId).style.display = 'block';
+        document.getElementById('deleteForm' + categoryId).addEventListener('submit', function (event) {
+            event.preventDefault();
+            this.submit();
+            hideConfirmationPopup(categoryId);
+        });
+    }
+
+    function hideConfirmationPopup(categoryId) {
+        document.getElementById('confirmationPopup' + categoryId).style.display = 'none';
+    }
+
+    function confirmDelete(categoryId) {
+        document.getElementById('deleteForm' + categoryId).submit();
+    }
+</script>
 @endsection

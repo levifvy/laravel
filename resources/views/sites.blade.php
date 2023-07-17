@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="w-full p-4">
-        <a href="{{route('results')}}" class="relative block h-48 overflow-hidden rounded">
+        <a href="{{route('resultsMenu')}}" class="relative block h-48 overflow-hidden rounded">
           <img class="block h-full w-full object-cover object-center cursor-pointer" src="{{asset('/img/football3.jpg')}}" alt="Football" width="50" height="50"/>
         </a>
         <div class="mt-2">
