@@ -3,9 +3,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Team;
 use App\Models\User;
 Use App\Models\Category;
+use App\Models\Player;
+use App\Models\Game;
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,8 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        Team::factory(10)->create();
-        // Category::factory(3)->create();
+        User::factory(5)->create();
+        Category::factory(5)->create();
+        Player::factory(5)->create();
+        Game::factory(5)->create();
     }
 }

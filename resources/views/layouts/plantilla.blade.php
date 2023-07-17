@@ -9,20 +9,29 @@
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css">
 
     <style>
-        .active{
+        .active {
             color: green;
             font-weight: bold;
         }
     </style>
-
 </head>
+
 <body>
-    
     @include('layouts.partials.header')
 
-    @yield('content')
+    <div class="flex flex-1">
+        <div class="w-full bg-white">
+            @yield('content')
+        </div>
+
+        <div class="w-1/8 bg-white">
+            @include('layouts.partials.rightBar')
+        </div>
+    </div>
 
     @include('layouts.partials.footer')
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
+
 </html>

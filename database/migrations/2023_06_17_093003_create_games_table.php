@@ -14,17 +14,24 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('category_id')
+                    ->default(1)
+                    ->constrained(table:'categories')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+
             $table->foreignId('team1_id')
-                ->constrained(table:'teams')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                    ->constrained(table:'teams')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
 
             $table->foreignId('team2_id')
                     ->constrained(table:'teams')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
 
-            $table->dateTime('start_time');
+            $table->string('game_winner')->default(0);
+            $table->dateTime('game_date')->default(now());
             $table->timestamps();
 
         });

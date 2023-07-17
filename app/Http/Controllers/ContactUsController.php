@@ -17,6 +17,7 @@ class ContactUsController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'subject' => 'required',
             'message' => 'required',
         ]);
     $email = new ContactUsMailable($request->all());

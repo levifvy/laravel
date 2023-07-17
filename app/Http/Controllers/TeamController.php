@@ -3,176 +3,124 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Storeteam;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-
 class TeamController extends Controller
 {
     public function index(){
-
         $teams = Team::orderBy('id', 'desc')->paginate(50);
-        
         return view('teams.index', compact('teams'));
-    }
-    
-    public function first(){
-
-        $teams = Team::orderBy('id', 'desc')->paginate(50);
-
-        return view('teams.first', compact('teams'));
-    }
-    public function second(){
-
-        $teams = Team::orderBy('id', 'desc')->paginate(50);
-
-        return view('teams.second', compact('teams'));
-    }
-    public function third(){
-
-        $teams = Team::orderBy('id', 'desc')->paginate(50);
-
-        return view('teams.third', compact('teams'));
-    }
-    public function all(){
-
-        $teams = Team::orderBy('id', 'desc')->paginate(50);
-
-        return view('teams.all', compact('teams'));
-    }
-    public function fixtures(Request $request ){
-        $teams = Team::all();
-        $team1 = Team::where('name', $request->team1_name)->firstOrFail();
-        $team2 = Team::where('name', $request->team2_name)->firstOrFail();
-        
-        return view('teams.fixtures', compact('team1', 'team2', 'teams'));
-    }
-    public function fixtures2(){
-        $teams = Team::all();
-
-        return view('teams.fixtures2', compact('teams'));
-    }
-    public function fixtures4(Request $request){
-        $teams = Team::all();
-
-        $team1 = Team::where('name', $request->team1_name)->firstOrFail();
-        $team2 = Team::where('name', $request->team2_name)->firstOrFail();
-        
-    
-        return view('teams.fixtures4', compact('team1', 'team2', 'teams'));
-    }
-    public function fixtures3(){
-
-        $teams = Team::all();
-
-        return view('teams.fixtures3', compact('teams'));
-    }
-    public function resultsMenu(){
-        $teams = DB::table('teams')->orderByDesc('score')->get();
-
-        return view('teams.resultsMenu', compact('teams'));
-    }
-    public function results(){
-        $teams = DB::table('teams')->orderByDesc('score')->get();
-
-        return view('teams.results', compact('teams'));
-    }
-
-    public function results2(){
-        $teams = DB::table('teams')->orderByDesc('score')->get();
-
-        return view('teams.results2', compact('teams'));
-    }
-
-    public function results3(){
-        $teams = DB::table('teams')->orderByDesc('score')->get();
-
-        return view('teams.results3', compact('teams'));
     }
 
     public function create(){
-        
-        return view('teams.create');
+        $categories = Category::all();
+        Category::pluck('name', 'id');
+        return view('teams.create', compact('categories'));
     }
     
     public function store(StoreTeam $request){
-
-        $request->merge([
-            'slug' => Str::slug($request->name),
-          ]);
-
-        $team = Team::create($request->all());
-        
+        $validatedData = $request->validated();
+        $team = new Team();
+        $team->category_id = $validatedData['category_id'];
+        $team->name = $validatedData['name'];
+        $team->description = $validatedData['description'];
+        $team->slug = Str::slug($validatedData['name']);
+        $team->save();
         return redirect()->route('teams.show', $team);
-    }
+        }
     
     public function show(Team $team){
-        
         return view('teams.show', compact('team'));
     }
 
     public function edit(Team $team){
-        return view('teams.edit', compact('team'));
+        $categories = Category::all();
+        Category::pluck('name', 'id');
+        $teams = Team::all();
+        Team::pluck('name', 'id');
+        return view('teams.edit', compact('team', 'categories', 'teams'));
     }
 
     public function update(Request $request, Team $team){
-
-        $request->merge([
-            'slug' => Str::slug($request->name),
-          ]);
-        
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'category' => 'required',
-        ]);
-
-        $team->update($request->all());
+        $team->category_id = $request->category_id;
+        $team->name = $request->name;
+        $team->description = $request->description;
+    
+        $team->save();
 
         return redirect()->route('teams.show', $team);
     }
      
     public function destroy(Team $team){
         $team->delete();
-
         return redirect()->route('teams.index');
     }
 
-
-    public function fixtures5(Request $request, $id)
+    public function storeResults(Request $request)
     {
-        // get team to modify
-        $team = Team::findOrFail($id);
+        $rules = [
+            'team_id1' => 'required|exists:teams,id',
+            'category_id1' => 'required|exists:categories,id',
+            'goals1' => 'integer',
+            'fouls_commited1' => 'integer',
+            'fouls_received1' => 'integer',
+            'red_cards1' => 'integer',
+            'yellow_cards1' => 'integer',
+            'team_id2' => 'required|exists:teams,id',
+            'category_id2' => 'required|exists:categories,id',
+            'goals2' => 'integer',
+            'fouls_commited2' => 'integer',
+            'fouls_received2' => 'integer',
+            'red_cards2' => 'integer',
+            'yellow_cards2' => 'integer',
+        ];
 
-        // get values submited by forms
-        $goals = $request->input('goals');
-        $fouls_commited = $request->input('fouls_commited');
-        $fouls_received = $request->input('fouls_received');
-        $red_cards = $request->input('red_cards');
-        $yellow_cards = $request->input('yellow_cards');
-        $match_results = $request->input('match_results');
+        $validatedData = $request->validate($rules);
 
-        // update stats from the team
-        $team->goals += $goals;
-        $team->fouls_commited += $fouls_commited;
-        $team->fouls_received += $fouls_received;
-        $team->red_cards += $red_cards;
-        $team->yellow_cards += $yellow_cards;
-        $team->match_results += $match_results;
+        $team1 = Team::find($validatedData['team_id1']);
+        $team2 = Team::find($validatedData['team_id2']);
 
-        // Get the new value of "score" column
-        $score = $team->score + ($goals * 5) - ($fouls_commited * 2) - ($red_cards * 4) - ($yellow_cards * 3) + ($match_results * 10);
+        // Increment team1 stats
+        $team1->goals += $validatedData['goals1'];
+        $team1->fouls_commited += $validatedData['fouls_commited1'];
+        $team1->fouls_received += $validatedData['fouls_received1'];
+        $team1->red_cards += $validatedData['red_cards1'];
+        $team1->yellow_cards += $validatedData['yellow_cards1'];
+        $team1->match_results += $this->calculateMatchResult($validatedData['goals1'], $validatedData['goals2']);
+        $team1->score = $this->calculateScore($team1);
+        $team1->save();
 
-        // update the "score" column
-        $team->score = $score;
+        // Increment team2 stats
+        $team2->goals += $validatedData['goals2'];
+        $team2->fouls_commited += $validatedData['fouls_commited2'];
+        $team2->fouls_received += $validatedData['fouls_received2'];
+        $team2->red_cards += $validatedData['red_cards2'];
+        $team2->yellow_cards += $validatedData['yellow_cards2'];
+        $team2->match_results += $this->calculateMatchResult($validatedData['goals2'], $validatedData['goals1']);
+        $team2->score = $this->calculateScore($team2);
+        $team2->save();
 
-        // Save all changes in the database
-        $team->save();
+        return redirect()->route('results.index')->with('success', 'Results created successfully');
+    }
 
-        return redirect()->route('teams.fixtures5', ['id' => $id]);
+    private function calculateMatchResult($goals1, $goals2)
+    {
+        if ($goals1 > $goals2) {
+            return 1; // Team 1 wins
+        } elseif ($goals1 < $goals2) {
+            return -1; // Team 2 wins
+        } else {
+            return 0; // Draw
+        }
+    }
 
+    private function calculateScore($team)
+    {
+        return ($team->goals * 5) - ($team->fouls_commited * 2) - ($team->red_cards * 4) - ($team->yellow_cards * 3) + ($team->match_results * 10);
     }
 
 }

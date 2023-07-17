@@ -20,8 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
        
-        $categories = Category::orderBy('id', 'desc')->paginate(50);
         return view('categories.index', compact('categories'));
     }
 
@@ -30,7 +30,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        $categories = Category::all();
+
+        return view('categories.create', compact('categories'));
     }
 
     /**
@@ -38,10 +40,8 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-       $category = Category::create($request->all());
+        $category = Category::create($request->all());
         return redirect()->route('categories.index', $category)->with('success', 'Category created successfully');
-
-       
     }
 
     /**
@@ -49,7 +49,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+        $categories = DB::table('categories')->get();
+        $teams = DB::table('teams')->get();
+
+        return view('categories.show', compact('category', 'teams', 'categories'));
     }
 
     /**
@@ -65,8 +68,9 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $category->update($request->validated());
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('categories.index', $category)->with('success', 'Category updated successfully');
     }
 
     /**

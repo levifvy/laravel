@@ -16,16 +16,28 @@ return new class extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->integer('age');
-            $table->string('position');
+            $table->string('image')->nullable();
+            $table->enum('position', [
+                'Goalkeeper_(GK)',
+                'Center-back_(CB)',
+                'Full-back_left_(LB)',
+                'Full-back_right_(RB)',
+                'Defensive midfielder_(CDM)',
+                'Central midfielder_(CM)',
+                'Attacking midfielder_(CAM)',
+                'Winger_left_(LW)',
+                'Winger_right_(RW)',
+                'Striker_(ST)',
+                'Striker_(CF)'
+            ]);
             $table->string('nif')->unique();
             
             $table->foreignId('team_id')
-            ->constrained(table:'teams')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+                ->constrained('teams')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->timestamps();
-            
         });
     }
 
@@ -37,3 +49,4 @@ return new class extends Migration
         Schema::dropIfExists('players');
     }
 };
+

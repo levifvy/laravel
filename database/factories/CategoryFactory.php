@@ -17,11 +17,10 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $category = $this->faker->unique()->randomElement(['First category', 'Second category', 'Third category']);
-
+        $category = $this->faker->unique()->randomElement(['juniors', 'amateurs', 'professionals', 'experts', 'masters']);
         
         while (Category::where('name', $category)->exists()) {
-            $category = $this->faker->unique()->randomElement(['First category', 'Second category', 'Third category']);
+            $category = $this->faker->unique()->randomElement(['juniors', 'amateurs', 'professionals', 'experts', 'masters']);
         }
 
         return [
