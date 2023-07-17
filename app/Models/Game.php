@@ -10,6 +10,7 @@ use App\Models\category;
 class Game extends Model
 {
     use HasFactory;
+    protected $guarded = [];
    
     public function team1()
     {
@@ -23,6 +24,6 @@ class Game extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
