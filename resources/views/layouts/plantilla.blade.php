@@ -10,28 +10,29 @@
 
     <style>
         .active {
-            color: green;
+            color: white;
             font-weight: bold;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        main {
+            flex-grow: 1;
         }
     </style>
 </head>
-
 <body>
     @include('layouts.partials.header')
 
-    <div class="flex flex-1">
+    <main class="flex-grow">
         <div class="w-full bg-white">
             @yield('content')
         </div>
-
-        <div class="w-1/8 bg-white">
-            @include('layouts.partials.rightBar')
-        </div>
-    </div>
+    </main>
 
     @include('layouts.partials.footer')
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
-
 </html>

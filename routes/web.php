@@ -13,6 +13,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\FixtureController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TeamListController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,6 @@ Route::get('all', [TeamListController::class,'all'])->name('all');
 Route::view('sites','sites')->name('sites');
 Route::view('about','about')->name('about');
 Route::view('rules','rules')->name('rules');
+
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');

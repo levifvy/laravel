@@ -2,8 +2,8 @@
     <div class="container mx-auto flex justify-between px-4 sm:flex-col md:flex-row lg:flex-row xl:flex-row">
         <div class="sm:w-full md:w-1/3 lg:w-1/3 xl:w-1/3">
             <h3 class="text-xl font-bold text-white">Contact Us</h3>
-            <a href="{{route('contactUs.index')}}"><p class="text-gray-200 hover:text-blue-400">Leave us your message</p></a>
-            <a href="https://goo.gl/maps/bGt48Rg5ombXSMbz7"><p class="text-gray-200 hover:text-red-400">Address: Calle de Roc Boronat, 117, 08018, Barcelona</p></a>
+            <a href="{{ route('contactUs.index') }}"><p class="text-gray-200 hover:text-blue-400">Leave us your message</p></a>
+            <a href="https://maps.app.goo.gl/xueZQ8GKYpEjYe11A" target="_blank"><p class="text-gray-200 hover:text-red-400">Address: Av. de l'Anselm de Riu, 10, 08924 Santa Coloma de Gramenet, Barcelona</p></a>
         </div>
         <div class="sm:w-full md:w-1/3 lg:w-1/3 xl:w-1/3">
             <h3 class="text-xl font-bold text-white">Follow Us</h3>
@@ -24,3 +24,6 @@
         </div>
     </div>
 </footer>
+<div class="bg-gray-800 text-white text-center py-4">
+    {{ __('© 2025 Your Company. All rights reserved.') }}
+</div>

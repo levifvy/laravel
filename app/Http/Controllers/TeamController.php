@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Team;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\Storeteam;
+use App\Http\Requests\StoreTeam;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
