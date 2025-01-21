@@ -1,39 +1,60 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import io
 
-API_URL = 'http://localhost/api/news'
+fitxer= io.open("kaggle.txt",'w',encoding="utf-8")
+driver = webdriver.Firefox()
+driver.get("https://www.kaggle.com")
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/main/div[1]/div/div[5]/div[1]/div/div[2]/div"))).click()
+elem = driver.find_element(By.XPATH, "/html/body/main/div[1]/div/div[3]/div/div[1]/a[2]").click()
+elem = driver.find_element(By.XPATH, "/html/body/main/div[1]/div/div[5]/div[2]/div[4]/div/div/div[2]/button[1]").click()
+elem = driver.find_element(By.XPATH, "/html/body/main/div[1]/div/div[5]/div[2]/div[4]/div/div/div[2]/button[1]/span").click()
+time.sleep(2)
+last_height = driver.execute_script("return document.body.scrollHeight")
+comptador = 0
+while comptador<50:
+    comptador += 1
+    print("Scrolling to the bottom of the page...")
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+      
+    try:
+        # Try to locate the button and click it
+        print("Attempting to find the button...")
+        elem = driver.find_element(By.XPATH, "/html/body/main/div[1]/div/div[5]/div[2]/div[5]/div/div/div/ul[2]/li[11]/button")
+        print("Button found, attempting to click it...")
+        elem.click()  # Click on the button
+        print("Button clicked successfully!")
 
-def scrape_and_post_news():
-    # Realizar el scraping
-    url = "https://example.com/futbol-internacional"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
+    except StaleElementReferenceException: # type: ignore
+        print("StaleElementReferenceException encountered, retrying...")
+        continue  # Retry finding the element
 
-    # Extraer datos relevantes
-    articles = soup.find_all('article', class_='news-item')
-    for article in articles:
-        title = article.find('h2').text.strip()
-        content = article.find('p').text.strip()
-        source = "Example Site"
-        news_url = article.find('a')['href']
-        published_at = article.find('time')['datetime']
+    except NoSuchElementException: # type: ignore
+        print("NoSuchElementException: Couldn't find the button. The XPath might be wrong.")
+        break  # If the element doesn't exist, stop the process
 
-        # Preparar los datos para enviar a la API
-        data = {
-            'title': title,
-            'content': content,
-            'source': source,
-            'url': news_url,
-            'published_at': published_at,
-        }
+    except ElementNotInteractableException: # type: ignore
+        print("ElementNotInteractableException: The button is present but not interactable. Maybe it's not visible yet.")
+        break  # Handle when the button is not interactable
 
-        # Enviar a la API
-        response = requests.post(API_URL, json=data)
-        if response.status_code == 201:
-            print(f"Noticia guardada: {title}")
-        else:
-            print(f"Error al guardar noticia: {response.json()}")
+    # Check if we've reached the end of the page by comparing the heights
+    new_height = driver.execute_script("return document.body.scrollHeight")
+    if new_height == last_height:
+        time.sleep(2)
+        print("Reached the bottom of the page.")
+        element = driver.find_element(By.XPATH, "/html/body/main/div[1]/div/div[5]/div[2]/div[5]/div/div/div/ul[1]")
 
-# Ejecutar el scraping
-scrape_and_post_news()
+# Obté el text de l'element
+        element_text = element.text
 
+# Mostra el text a la consola
+       # Mostra el text del body
+        fitxer.write(element_text+"\n")
+      
+    last_height = new_height
+
+fitxer.close()

@@ -50,10 +50,10 @@
                 id="dropdownMenu" 
                 class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-300 shadow-lg rounded-lg z-50"
             >
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
+                <a href="/login" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
                     <i class="ki-outline ki-badge mr-2"></i> Login
                 </a>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
+                <a href="/register" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
                     <i class="ki-outline ki-profile-circle mr-2"></i> Register
                 </a>
                 <a href="{{ route('categories.create') }}" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
@@ -74,9 +74,12 @@
                 <a href="{{ route('players.index') }}" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
                     <i class="ki-outline ki-coffee mr-2"></i> Players
                 </a>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
-                    <i class="ki-outline ki-coffee mr-2"></i> Log Out
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
+                        <i class="ki-outline ki-coffee mr-2"></i> Log Out
+                    </button>
+                </form>
             </div>
         </div>
 
