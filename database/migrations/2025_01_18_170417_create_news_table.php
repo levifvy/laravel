@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('content');
+            $table->text('content')->nullable(); // Permitir valores nulos
             $table->string('source');
             $table->string('url')->unique();
+            $table->string('image_url')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

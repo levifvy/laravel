@@ -56,6 +56,7 @@
                 <a href="/register" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
                     <i class="ki-outline ki-profile-circle mr-2"></i> Register
                 </a>
+                <hr>
                 <a href="{{ route('categories.create') }}" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 flex items-center">
                     <i class="ki-outline ki-coffee mr-2"></i> New Category
                 </a>

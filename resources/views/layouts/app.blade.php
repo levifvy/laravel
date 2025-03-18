@@ -14,15 +14,24 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="font-sans antialiased flex flex-col min-h-screen">
+        <div class="flex-grow bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                        <div>
+                            {{ $header }}
+                        </div>
+
+                        <!-- Go to Home Button -->
+                        <div class="mt-6">
+                            <a href="{{ route('home') }}" class="inline-block px-6 py-3 text-white bg-purple-950 hover:bg-purple-700 rounded-lg shadow-md transition duration-300">
+                                Go to Home
+                            </a>
+                        </div>
                     </div>
                 </header>
             @endif
@@ -32,5 +41,7 @@
                 {{ $slot }}
             </main>
         </div>
+
+        @include('layouts.partials.footer')
     </body>
 </html>

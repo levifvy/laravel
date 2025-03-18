@@ -1,25 +1,26 @@
 @extends('layouts.plantilla')
 
-@section('title', 'News')
+@section('title', 'Football News')
 
 @section('content')
-<div class="container mx-auto px-4">
-    <h1 class="text-3xl font-bold text-teal-600 my-6">Lasts News</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @forelse($news as $item)
-        <div class="bg-white rounded-lg shadow-md p-4">
-            <h2 class="text-xl font-semibold text-gray-800">
-                <a href="{{ route('news.show', $item->id) }}" class="hover:underline">
-                    {{ $item->title }}
-                </a>
-            </h2>
-            <p class="text-gray-600 mt-2">{{ Str::limit($item->content, 100) }}</p>
-            <p class="text-sm text-gray-500 mt-4">Fuente: {{ $item->source }}</p>
-            <p class="text-sm text-gray-500">Published: {{ $item->published_at }}</p>
-        </div>
-        @empty
-        <p class="col-span-3 text-gray-500">There are not news available.</p>
-        @endforelse
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Latest Football News</h1>
+    <div class="grid gap-6">
+        @foreach ($news as $item)
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <!-- Mostrar la imagen si existe -->
+                @if ($item->image_url)
+                    <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="w-full h-48 object-cover mb-4 rounded-lg">
+                @endif
+                <h2 class="text-xl font-semibold mb-2">{{ $item->title }}</h2>
+                <p class="text-gray-700 mb-4">{{ Str::limit($item->content, 200) }}</p>
+                <a href="{{ route('news.show', $item->id) }}" class="text-blue-500 hover:text-blue-700">Read more...</a>
+                <div class="mt-4 text-sm text-gray-600">
+                    <span>Source: {{ $item->source }}</span>
+                    <span class="ml-4">Published on: {{ $item->published_at ? \Carbon\Carbon::parse($item->published_at)->format('d/m/Y H:i') : 'Date not available' }}</span>
+                </div>
+            </div>
+        @endforeach
     </div>
     <div class="mt-6">
         {{ $news->links() }}
