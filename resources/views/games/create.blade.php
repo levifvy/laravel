@@ -3,8 +3,8 @@
 @section('title', 'Game.create')
 
 @section('content')
-<div class="bg-image h-screen">
-    <div class="relative py-16 bg-transparent">
+<div class="bg-image min-h-screen flex flex-col justify-between">
+    <div class="relative py-16 bg-transparent flex-grow">
         <div class="container mx-auto">
             <div class="grid place-items-center justify-center">
                 <div class="col-start-2">
@@ -111,6 +111,10 @@
         background-image: url({{ asset('/img/cesped10.jpg') }});
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100vh - 128px); /* Ajusta según el tamaño del header y footer */
     }
 </style>
 @endsection

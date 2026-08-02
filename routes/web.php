@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
-use App\Models\User;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+use App\Models\User;
 
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\FixtureController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TeamListController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +27,49 @@ use App\Http\Controllers\TeamListController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+/*Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');*/
+
+
+
+/*Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard'); */
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+});
+
 Route::get('/', HomeController::class)->name('home');
 Route::resource('teams', TeamController::class);
 Route::post('teams/results', [TeamController::class, 'storeResults'])->name('teams.storeResults');
 Route::resource('categories', CategoryController::class);
-Route::resource('players', PlayerController::class);
-Route::resource('games', GameController::class);
+
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('games', GameController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('players', PlayerController::class);
+    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+});
+
+
 Route::resource('results', ResultController::class);
 Route::get('contactUs', [ContactUsController::class,'index'])->name('contactUs.index');
 Route::post('contactUs', [ContactUsController::class,'store'])->name('contactUs.store');
@@ -38,3 +78,6 @@ Route::get('all', [TeamListController::class,'all'])->name('all');
 Route::view('sites','sites')->name('sites');
 Route::view('about','about')->name('about');
 Route::view('rules','rules')->name('rules');
+
+
+require __DIR__.'/auth.php';

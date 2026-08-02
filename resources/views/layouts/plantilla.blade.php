@@ -5,33 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css">
 
     <style>
         .active {
-            color: green;
+            color: white;
             font-weight: bold;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        main {
+            flex-grow: 1;
         }
     </style>
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
     @include('layouts.partials.header')
 
-    <div class="flex flex-1">
+    <main class="flex-grow">
         <div class="w-full bg-white">
             @yield('content')
         </div>
-
-        <div class="w-1/8 bg-white">
-            @include('layouts.partials.rightBar')
-        </div>
-    </div>
+    </main>
 
     @include('layouts.partials.footer')
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

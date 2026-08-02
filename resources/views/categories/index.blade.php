@@ -3,7 +3,7 @@
 @section('title','Categories')
 
 @section('content')
-<div class="bg-image h-screen">
+<div class="">
     <div class="grid place-items-center z-9">
         <div class="w-full lg:w-3/6">
                     <div class="bg-white shadow-md rounded-lg my-6">

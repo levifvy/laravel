@@ -22,7 +22,7 @@ class StoreTeam extends FormRequest
     public function rules(): array
     {
         return [
-           'category_id' => 'required',
+            'category_id' => 'required',
             'name' => 'required|max:20',
             'description' => 'required|min:10',
             
